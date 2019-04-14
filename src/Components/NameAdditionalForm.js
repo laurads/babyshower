@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button, Input, Form} from 'semantic-ui-react';
 
-const PREVIOUS_INDEX=1;
+const PREVIOUS_INDEX=0;
 
 export default class NameAdditionalForm extends Component {
     constructor(props) {

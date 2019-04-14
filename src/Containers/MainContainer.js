@@ -7,6 +7,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import './NotificationsStyle.css';
 
 class MainContainer extends Component {
+    constructor(props) {
+        super(props);
+            this.state = {
+                playerName: '',
+            };
+        }
 
     displayNotification = (level, message) => {
         if(level === "success"){
@@ -30,12 +36,26 @@ class MainContainer extends Component {
         }
     }
 
+    updatePlayerName = (playerName) => {
+        this.setState({
+            playerName: playerName
+        })
+    }
+
     render() {
         return (
             <div className="Container-body">
                 <Header/>
-                <NameForm displayNotification={this.displayNotification}/>
-                <GameContainer displayNotification={this.displayNotification}/> 
+                <NameForm 
+                    displayNotification={this.displayNotification}
+                    updatePlayerName={this.updatePlayerName}
+                />
+                {this.state.playerName != '' && 
+                    <GameContainer 
+                        displayNotification={this.displayNotification}
+                        playerName={this.state.playerName}
+                    /> 
+                }
                 <ToastContainer 
                     position="bottom-center"
                     autoClose={5000}

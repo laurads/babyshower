@@ -5,12 +5,18 @@ import MainContainer from './Containers/MainContainer';
 
 
 class App extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+          loggedIn : true,
+      };
+    }
 
   render() {
     return (
         <div className="App-body">
-          {/*<LoginContainer/> */}
-          <MainContainer />
+          {!this.state.loggedIn && <LoginContainer/>}
+          {this.state.loggedIn && <MainContainer />}
         </div>
     );
   }

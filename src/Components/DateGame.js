@@ -37,6 +37,8 @@ export default class DateGame extends Component {
         console.log("TO SAVE IN DB")
         console.log(birthDate);
         console.log("----------------------");
+        this.props.displayNotification("success", "C'est bon c'est ds la boite, merci !!!");
+        this.props.displayNotification("error", "Oups, il y a eu une erreur. Rentente ta chance please !!!");
     }
 
     render() {

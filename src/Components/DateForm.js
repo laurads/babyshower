@@ -4,6 +4,7 @@ import { Button, Form} from 'semantic-ui-react';
 import {DatetimePicker} from 'rc-datetime-picker';
 import moment from 'moment';
 import 'rc-datetime-picker/dist/picker.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 export default class DateForm extends Component {
     constructor(props) {
@@ -33,6 +34,7 @@ export default class DateForm extends Component {
             <div >
                 <Form onSubmit={this.handleValidateSubmit} className="Game-form">
                 <div> Quand pensez-vous que bébé #3 va pointer le bout de son nez ? </div>
+                <div className="Form-label-clue"> Indice : prévu le 31 Mai </div>
                 <div className="Game-date">
                     <DatetimePicker
                         moment={this.state.birthDate}

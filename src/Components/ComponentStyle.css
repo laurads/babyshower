@@ -122,6 +122,15 @@
     margin-right: 20px;
   }
 
+  .Form-label-clue{
+      margin-top: 20px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+  }
+
   .Modal{
     background-color: #fff;
     border-radius: 5;
@@ -149,3 +158,18 @@
      width: 100%;
   }
 
+  .Welcome-label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Welcome-title{
+      font-size: 30px;
+      margin-bottom: 20px;
+  }
+
+  .Welcome-description{
+    font-size: 1em;
+}

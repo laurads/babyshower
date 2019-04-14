@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button} from 'semantic-ui-react';
 import Modal from './Modal';
-import NameFavoriteForm from './NameFavoriteForm';
-import NameDislikeForm from './NameDislikeForm';
 import NameAdditionalForm from './NameAdditionalForm';
 import NameRatingForm from './NameRatingForm';
 
@@ -13,6 +11,32 @@ export default class NameGame extends Component {
     constructor(props) {
     super(props);
         this.state = {
+            names: [
+                {
+                    name: 'Sofia',
+                    rating: 0
+                },
+                {
+                    name: 'Donna',
+                    rating: 0
+                },
+                {
+                    name: 'Julia',
+                    rating: 0
+                },
+                {
+                    name: 'Dana',
+                    rating: 0
+                },
+                {
+                    name: 'Olivia',
+                    rating: 0
+                },
+                {
+                    name: 'Ilona',
+                    rating: 0
+                }
+            ],
             lovedNames : [],
             dislikedNames: [],
             others: '',
@@ -34,6 +58,13 @@ export default class NameGame extends Component {
     startNameGame = () => {
         this.setState({
             nameGameOpen: true
+        });
+    }
+
+    saveNamesRatingAndChangeIndex = (index, names) => {
+        this.setState({
+            formIndex: index,
+            names: names
         });
     }
 
@@ -75,15 +106,15 @@ export default class NameGame extends Component {
         });
     }
 
-    saveNamesInDb = (names) => {
-        const lovedNames = this.state.lovedNames;
-        const dislikedNames = this.state.dislikedNames;
-        const others = names;
+    saveNamesInDb = (otherNames) => {
+        const names = this.state.names;
+        const others = otherNames;
         console.log("TO SAVE IN DB")
-        console.log(lovedNames);
-        console.log(dislikedNames);
+        console.log(names);
         console.log(others);
         console.log("----------------------");
+        this.props.displayNotification("success", "C'est bon c'est ds la boite, merci !!!");
+        this.props.displayNotification("error", "Oups, il y a eu une erreur. Rentente ta chance please !!!");
     }
 
     render() {
@@ -104,11 +135,11 @@ export default class NameGame extends Component {
                         title="The Name Game">
                         {this.state.formIndex===0 && 
                             <NameRatingForm
-                                saveLovedNamesAndChangeIndex={this.saveLovedNamesAndChangeIndex}
-                                lovedNames={this.state.lovedNames}
+                                saveNamesRatingAndChangeIndex={this.saveNamesRatingAndChangeIndex}
+                                names={this.state.names}
                             />
                         }
-                        {this.state.formIndex===2 && 
+                        {this.state.formIndex===1 && 
                             <NameAdditionalForm
                                 saveOthersAndChangeIndex={this.saveOthersAndChangeIndex}
                                 validateForms={this.validateForms}

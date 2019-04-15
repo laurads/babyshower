@@ -50,7 +50,7 @@ class MainContainer extends Component {
                     displayNotification={this.displayNotification}
                     updatePlayerName={this.updatePlayerName}
                 />
-                {this.state.playerName != '' && 
+                {this.state.playerName !== '' && 
                     <GameContainer 
                         displayNotification={this.displayNotification}
                         playerName={this.state.playerName}

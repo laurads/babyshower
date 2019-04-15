@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button, Input, Form, Image} from 'semantic-ui-react';
+import {checkCredentials} from '../Api/fetchApi';
+
 
 export default class LoginForm extends Component {
     constructor(props) {
     super(props);
         this.state = {
-            login: '',
             password: ''
         };
     }
@@ -22,28 +23,24 @@ export default class LoginForm extends Component {
     
     login = (event) => {
         event.preventDefault();
-        alert('A name was submitted: ' + this.state.login);
+        checkCredentials(this.state.login,this.state.password)
+        .then(result => {
+            this.props.loggedInValidation(result==="OK"?true: false);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
 
     render() {
         return (
             <div >
-                <Form onSubmit={this.login} className="Component-form">
+                <Form onSubmit={this.login} className="Login-form">
                     <div className="Form-row">
-                        <Image style={{marginRight: "15px"}} className="Form-img" src='./Icons/login.png' avatar />
+                        <Image style={{marginRight: "10px"}} className="Form-img" src='./Icons/login.png' avatar />
                         <Input 
-                            className="Form-input"
+                            className="Login-input"
                             type="text" 
-                            name="login"
-                            placeholder="login"
-                            value={this.state.login} onChange={this.handleChange}
-                            required/>
-                    </div>
-                    <div className="Form-row">
-                        <Image style={{marginRight: "15px"}} src='../Icons/password.png' avatar />
-                        <Input 
-                            className="Form-input"
-                            type="password" 
                             name="password"
                             placeholder="password"
                             value={this.state.password} onChange={this.handleChange}

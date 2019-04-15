@@ -8,7 +8,11 @@ See the License for the specific language governing permissions and limitations 
 
 var express = require('express')
 var bodyParser = require('body-parser')
-var AWS = require('aws-sdk')
+var AWS = require('aws-sdk'),
+  region = "eu-west-2",
+  secretName = "babyshower/credentials",
+  secret,
+  decodedBinarySecret;
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 
 // declare a new express app
@@ -23,22 +27,39 @@ app.use(function(req, res, next) {
   next()
 });
 
+var client = new AWS.SecretsManager({
+  region: region
+});
 
-AWS.config.update({ region: process.env.REGION })
+function getSecretValue(){
+  return client.getSecretValue({SecretId: 'babyshower/credentials'}, function(err, data) {
+    if ('SecretString' in data) {
+      secret = data.SecretString;
+      console.log('encodé');
+    } else {
+        let buff = new Buffer(data.SecretBinary, 'base64');
+        decodedBinarySecret = buff.toString('ascii');
+        console.log('non encodé '+decodedBinarySecret);
+    }
+    // Your code goes here. 
+  });
+}
+
+//AWS.config.update({ region: process.env.REGION })
 
 /**********************
  * Example get method *
  **********************/
 
-app.get('/items', function(req, res) {
-  var login = process.env.FRIEND_USERNAME_TEST;
-  var password = process.env.FRIEND_PASSWORD_TEST;
-  if(req.login === login && req.password === password){
-    res.json("success");
-  }else if (req.login != login){
-    res.json("login error");
+app.get('/login', async function(req, res) {
+  let data = await client.getSecretValue({SecretId: 'babyshower/credentials'}).promise();
+  var password = JSON.parse(data.SecretString).babyshowerCredentials;
+  const userLogin =req.query.login;
+  const userPassword = req.query.password;
+  if(userPassword === password){
+    res.json("OK");
   }else {
-    es.json("password error");
+    res.json("password error");
   }
 });
 

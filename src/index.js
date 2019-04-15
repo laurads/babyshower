@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import 'semantic-ui-css/semantic.css'
+import 'semantic-ui-css/semantic.css';
+import awsmobile from './aws-exports';
+import Amplify from 'aws-amplify';
+
+Amplify.configure(awsmobile);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

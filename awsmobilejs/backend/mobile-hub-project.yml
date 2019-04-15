@@ -9,45 +9,65 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /items: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/Login-20190405220344.zip
-            description: 'Handler for calls to resource path : /items/{proxy+}'
+            codeFilename: uploads/Login-20190414214950.zip
+            description: 'Handler for calls to resource path : /login/{proxy+}'
             enableCORS: true
-            environment: {}
+            environment:
+              FRIEND_PASSWORD_TEST: pw
+              FRIEND_USERNAME_TEST: flo
             handler: lambda.handler
-            hashcode: yg7ONBNx+ISZJDfOtscQIUWKkXGzjQB6xnvTQedfE/4=
+            hashcode: XQPaO8D8OaTOzPNCMB3/1l6zL/UKxGfvX+TWNqFYQHk=
             memorySize: '128'
-            modified: '2019-04-06T05:05:12.139+0000'
+            modified: '2019-04-15T04:50:50.023+0000'
             name: Login
-            runtime: nodejs6.10
+            runtime: nodejs8.10
             timeout: '3'
-            version: LvNch52aq.Yxi2cmY4MfYn6Jj6jGKjQr
+            version: KTBFDRgqn9gyuG26PQVfs4zILSW3RgFB
           '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/Login-20190405220344.zip
-            description: 'Handler for calls to resource path : /items/{proxy+}'
+            codeFilename: uploads/Login-20190414214950.zip
+            description: 'Handler for calls to resource path : /login/{proxy+}'
             enableCORS: true
-            environment: {}
+            environment:
+              FRIEND_PASSWORD_TEST: pw
+              FRIEND_USERNAME_TEST: flo
             handler: lambda.handler
-            hashcode: yg7ONBNx+ISZJDfOtscQIUWKkXGzjQB6xnvTQedfE/4=
+            hashcode: XQPaO8D8OaTOzPNCMB3/1l6zL/UKxGfvX+TWNqFYQHk=
             memorySize: '128'
-            modified: '2019-04-06T05:05:12.139+0000'
+            modified: '2019-04-15T04:50:50.023+0000'
             name: Login
-            runtime: nodejs6.10
+            runtime: nodejs8.10
             timeout: '3'
-            version: 302ZJecSbFPd4dZleggCQ3z870wt.N4p
+            version: OU3sxWvi3to4KOcq8q5tHzeQDKh2w3Gm
           /login: !com.amazonaws.mobilehub.v0.Function 
-            name: Login
-            codeFilename: uploads/Login.zip
-            handler: lambda.handler
+            codeFilename: uploads/Login-20190414214950.zip
+            description: 'Handler for calls to resource path : /login/{proxy+}'
             enableCORS: true
-            runtime: nodejs6.10
-            environment: {}
+            environment:
+              FRIEND_PASSWORD_TEST: pw
+              FRIEND_USERNAME_TEST: flo
+            handler: lambda.handler
+            hashcode: XQPaO8D8OaTOzPNCMB3/1l6zL/UKxGfvX+TWNqFYQHk=
+            memorySize: '128'
+            modified: '2019-04-15T04:50:50.023+0000'
+            name: Login
+            runtime: nodejs8.10
+            timeout: '3'
+            version: eSTAOKepn1mTejVY5EIcroNsgcgasCkQ
           '/login/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            name: Login
-            codeFilename: uploads/Login.zip
-            handler: lambda.handler
+            codeFilename: uploads/Login-20190414214950.zip
+            description: 'Handler for calls to resource path : /login/{proxy+}'
             enableCORS: true
-            runtime: nodejs6.10
-            environment: {}
+            environment:
+              FRIEND_PASSWORD_TEST: pw
+              FRIEND_USERNAME_TEST: flo
+            handler: lambda.handler
+            hashcode: XQPaO8D8OaTOzPNCMB3/1l6zL/UKxGfvX+TWNqFYQHk=
+            memorySize: '128'
+            modified: '2019-04-15T04:50:50.023+0000'
+            name: Login
+            runtime: nodejs8.10
+            timeout: '3'
+            version: lfbEYu6kF_dVgLbxeh33QvOg1TlRlFog
       sampleCloudApi: !com.amazonaws.mobilehub.v0.API 
         attributes:
           name: sampleCloudApi

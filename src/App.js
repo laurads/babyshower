@@ -8,14 +8,28 @@ class App extends Component {
     constructor(props) {
       super(props);
       this.state = {
-          loggedIn : true,
+          loggedIn : false,
       };
     }
+
+  loggedInValidation = (validated) =>{
+    if(validated){
+      this.setState({
+        loggedIn: true,
+      })
+    }else{
+      console.log("Erreur password");
+    }
+  }
 
   render() {
     return (
         <div className="App-body">
-          {!this.state.loggedIn && <LoginContainer/>}
+          {!this.state.loggedIn && 
+            <LoginContainer
+              loggedInValidation={this.loggedInValidation}
+            />
+          }
           {this.state.loggedIn && <MainContainer />}
         </div>
     );

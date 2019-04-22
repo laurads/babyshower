@@ -3,6 +3,7 @@ import './ComponentStyle.css';
 import { Button} from 'semantic-ui-react';
 import DateForm from './DateForm';
 import Modal from './Modal';
+import {saveGuessDate} from '../Api/fetchApi';
 
 export default class DateGame extends Component {
     constructor(props) {
@@ -37,8 +38,13 @@ export default class DateGame extends Component {
         console.log("TO SAVE IN DB")
         console.log(birthDate);
         console.log("----------------------");
-        this.props.displayNotification("success", "C'est bon c'est ds la boite, merci !!!");
-        this.props.displayNotification("error", "Oups, il y a eu une erreur. Rentente ta chance please !!!");
+        saveGuessDate(this.props.playerName, birthDate)
+        .then(result => {
+            this.props.displayNotification("success", "C'est bon c'est ds la boite, merci !!!");
+        })
+        .catch((error) =>{
+            this.props.displayNotification("error", "Oups, il y a eu une erreur. Rentente ta chance please !!!");
+        });
     }
 
     render() {

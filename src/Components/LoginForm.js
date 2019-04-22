@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ComponentStyle.css';
-import { Button, Input, Form, Image} from 'semantic-ui-react';
+import { Button, Input, Form, Image, Label} from 'semantic-ui-react';
 import {checkCredentials} from '../Api/fetchApi';
 
 
@@ -8,7 +8,8 @@ export default class LoginForm extends Component {
     constructor(props) {
     super(props);
         this.state = {
-            password: ''
+            password: '',
+            invalidCredentialsMessage: ''
         };
     }
 
@@ -23,9 +24,19 @@ export default class LoginForm extends Component {
     
     login = (event) => {
         event.preventDefault();
-        checkCredentials(this.state.login,this.state.password)
+        checkCredentials(this.state.password)
         .then(result => {
-            this.props.loggedInValidation(result==="OK"?true: false);
+            if(result==="OK"){
+                this.setState({
+                    invalidCredentialsMessage: ""
+                });
+                this.props.loggedInValidation(true);
+            }else{
+                this.setState({
+                    invalidCredentialsMessage: "Dsl, le mot de passe n'est pas bon"
+                });
+                this.props.loggedInValidation(false);
+            }
         })
         .catch((error) => {
             console.log(error);
@@ -33,6 +44,7 @@ export default class LoginForm extends Component {
     }
 
     render() {
+        const {invalidCredentialsMessage} = this.state;
         return (
             <div >
                 <Form onSubmit={this.login} className="Login-form">
@@ -42,12 +54,13 @@ export default class LoginForm extends Component {
                             className="Login-input"
                             type="text" 
                             name="password"
-                            placeholder="password"
+                            placeholder="phrase magique"
                             value={this.state.password} onChange={this.handleChange}
                             required/>
+                            { invalidCredentialsMessage && (<Label basic color='red' pointing='left'>{ invalidCredentialsMessage }</Label>) }
                     </div>
                     <Button 
-                    style={{marginTop: '30px'}}
+                    style={{marginTop: "30px"}}
                     className="Form-button"> 
                         Se connecter 
                     </Button>

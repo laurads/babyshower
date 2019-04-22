@@ -2,8 +2,32 @@ import React, { Component } from 'react';
 import Slider from 'react-slick';
 import  './SliderStyle.css';
 
-export default class PictureGallery extends Component {
+const IMG_PREFIX = "img";
 
+export default class PictureGallery extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            images: []
+        };
+    }
+
+    createGalleryPictures = () => {
+        
+        let picturesId = []
+        for(let i=1;i<=22;i++){
+            picturesId.push(i);
+        }
+        return picturesId.map(this.createGalleryPicture);
+    }
+
+    createGalleryPicture = item => {
+        return (
+            <div key="item" className="Gallery-picture">
+                <img src={ require('../Images/gallery/'+IMG_PREFIX+item+'.jpg') } height="200px" alt="" />
+            </div>
+        )
+    }
 
     render() {
         const settings = {
@@ -18,30 +42,7 @@ export default class PictureGallery extends Component {
         return (
             <div className="Gallery-body">
                 <Slider  ref={slider => (this.slider = slider)} arrows={false} {...settings}>
-                    <div className="Gallery-picture">
-                        <img src={ require('../Images/gallery/img1.jpg') } height="200px" alt="" />
-                    </div>
-                    <div className="Gallery-picture">
-                        <img src={ require('../Images/gallery/img2.jpg') } height="200px" alt="" />
-                    </div>
-                    <div className="Gallery-picture">
-                        <img src={ require('../Images/gallery/img3.jpg') } height="200px" alt="" />
-                    </div>
-                    <div className="Gallery-picture">
-                        <img src={ require('../Images/gallery/img4.jpg') } height="200px" alt="" />
-                    </div>
-                    <div className="Gallery-picture">
-                        <img src={ require('../Images/gallery/img5.jpg') } height="200px" alt="" />
-                    </div>
-                    <div className="Gallery-picture">
-                        <img src={ require('../Images/gallery/img6.jpg') } height="200px" alt="" />
-                    </div>
-                    <div className="Gallery-picture">
-                        <img src={ require('../Images/gallery/img7.jpg') } height="200px" alt="" />
-                    </div>
-                    <div className="Gallery-picture"> 
-                        <img src={ require('../Images/gallery/img8.jpg') } height="200px" alt="" />
-                    </div>
+                    {this.createGalleryPictures()}
                 </Slider>
             </div>
         );

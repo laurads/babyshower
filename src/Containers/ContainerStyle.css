@@ -6,6 +6,18 @@
     justify-content: flex-start;
     width: 100%;
     margin-bottom: 30px;
+    background: url('../Images/Shimchaz_day_before-19.jpg');
+    background-position: center; 
+  }
+
+  .Container-body-level2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 30px;
   }
 
   .Login-body{

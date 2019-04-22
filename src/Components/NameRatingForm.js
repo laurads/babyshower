@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 import './ComponentStyle.css';
-import { Button, Form} from 'semantic-ui-react';
+import { Button, Form, Input} from 'semantic-ui-react';
 import NameRating from './NameRating';
 
-const NEXT_INDEX=1;
 
 export default class NameRatingForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             names : this.props.names,
+            other: ''
         };
     }
 
-    handleNextSubmit = (event) =>{
+    handleSubmit = (event) =>{
         event.preventDefault();
-        this.props.saveNamesRatingAndChangeIndex(NEXT_INDEX, this.state.names);
+        this.props.saveNamesRatingAndOther(this.state.names, this.state.other);
+    }
+
+    handleChange = (event) =>{
+        const target = event.target;
+        if(target){
+            this.setState({
+                other: target.value
+            });
+        }
     }
 
     createNameRatings = () => (
@@ -43,15 +52,25 @@ export default class NameRatingForm extends Component {
     render() {
         return (
             <div >
-                <Form onSubmit={this.handleNextSubmit} className="Game-form">
-                    <div> Notez les prénoms en fonction de vos préférences </div>
+                <Form onSubmit={this.handleSubmit} className="Game-form">
+                    <p> Notez les prénoms en fonction de vos préférences </p>
                     <div className="Game-row">
                         {this.createNameRatings()}
                     </div>
+                    <p> As-tu une autre proposition de prénom ? </p>
+                    <div className="Game-row">
+                        <Input 
+                            className="Game-input"
+                            type="text" 
+                            name="other"
+                            placeholder="Ta proposition"
+                            value={this.state.other} onChange={this.handleChange}
+                            />  
+                    </div>
                     <Button 
-                    style={{marginTop: '30px'}}
+                    style={{marginTop: '10px'}}
                     className="Form-button"> 
-                        Suivant
+                        Valider
                     </Button>
                 </Form>
             </div>

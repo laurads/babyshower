@@ -22,7 +22,7 @@ export default class DateForm extends Component {
 
     handleValidateSubmit = (event) =>{
         event.preventDefault();
-        this.props.validateForm(this.state.birthDate.format('MM/DD H:mm'))
+        this.props.validateForm(this.state.birthDate.format('DD/MM H:mm'))
     }
 
     render() {
@@ -33,8 +33,8 @@ export default class DateForm extends Component {
         return (
             <div >
                 <Form onSubmit={this.handleValidateSubmit} className="Game-form">
-                <div> Quand pensez-vous que bébé #3 va pointer le bout de son nez ? </div>
-                <div className="Form-label-clue"> Indice : prévu le 31 Mai </div>
+                <p> Quand pensez-vous que bébé #3 va pointer le bout de son nez ? </p>
+                <p className="Form-label-clue"> Indice : <br/>prévu le 31 Mai </p>
                 <div className="Game-date">
                     <DatetimePicker
                         moment={this.state.birthDate}
@@ -47,7 +47,7 @@ export default class DateForm extends Component {
                 </div>
                 <div>
                     <Button 
-                        style={{marginTop: '30px'}}
+                        style={{marginTop: '10px'}}
                         className="Form-button"> 
                             Valider
                     </Button>

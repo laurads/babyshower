@@ -27,7 +27,7 @@ export default class Modal extends Component{
                                 alt=""
                             />
                         </div>
-                        <div  style ={{marginBottom:15, fontWeight: "bold"}}> {this.props.title} </div>
+                        <div  style ={{fontWeight: "bold"}}> {this.props.title} </div>
                     </div>
                     <div className="scroll" style={{margin: "20px"}}>
                         {this.props.children}

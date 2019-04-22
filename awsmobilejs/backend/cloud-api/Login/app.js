@@ -31,83 +31,28 @@ var client = new AWS.SecretsManager({
   region: region
 });
 
-function getSecretValue(){
-  return client.getSecretValue({SecretId: 'babyshower/credentials'}, function(err, data) {
-    if ('SecretString' in data) {
-      secret = data.SecretString;
-      console.log('encodé');
-    } else {
-        let buff = new Buffer(data.SecretBinary, 'base64');
-        decodedBinarySecret = buff.toString('ascii');
-        console.log('non encodé '+decodedBinarySecret);
-    }
-    // Your code goes here. 
-  });
-}
-
-//AWS.config.update({ region: process.env.REGION })
-
-/**********************
- * Example get method *
- **********************/
-
 app.get('/login', async function(req, res) {
-  let data = await client.getSecretValue({SecretId: 'babyshower/credentials'}).promise();
-  var password = JSON.parse(data.SecretString).babyshowerCredentials;
-  const userLogin =req.query.login;
-  const userPassword = req.query.password;
-  if(userPassword === password){
-    res.json("OK");
-  }else {
-    res.json("password error");
+    try{
+    let data = await client.getSecretValue({SecretId: 'babyshower/credentials'}).promise();
+    let password = JSON.parse(data.SecretString).babyshowerCredentials;
+    if(req.query.password === password){
+      res.json("OK");
+    }else {
+      res.json("password error");
+    }
+  }catch(error){
+    if (error.code === 'ResourceNotFoundException') {
+      console.log('The requested secret ' + secretId + ' was not found');
+    } else if (error.code === 'InvalidRequestException') {
+        console.log('The request was invalid due to: ' + error.message);
+    } else if (error.code === 'InvalidParameterException') {
+        console.log('The request had invalid params: ' + error.message);
+    } else {
+        console.log(error);
+    };
+    res.json("error");
+    throw error;
   }
-});
-
-app.get('/items/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
-});
-
-/****************************
-* Example post method *
-****************************/
-
-app.post('/items', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
-
-app.post('/items/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
-
-/****************************
-* Example post method *
-****************************/
-
-app.put('/items', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
-
-app.put('/items/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
-
-/****************************
-* Example delete method *
-****************************/
-
-app.delete('/items', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
-
-app.delete('/items/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
 });
 
 app.listen(3000, function() {

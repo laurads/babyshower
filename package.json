@@ -6,11 +6,13 @@
     "aws-amplify": "^1.1.22",
     "aws-amplify-react": "^2.3.2",
     "babel-jest": "23.6.0",
+    "babel-plugin-react-intl": "^3.0.1",
     "font-awesome": "^4.7.0",
     "moment": "^2.24.0",
     "rc-datetime-picker": "^1.6.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "react-intl": "^2.8.0",
     "react-scripts": "2.1.8",
     "react-slick": "^0.23.2",
     "react-toastify": "^5.0.0"

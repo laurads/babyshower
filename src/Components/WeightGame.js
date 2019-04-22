@@ -4,6 +4,7 @@ import { Button} from 'semantic-ui-react';
 import WeightForm from './WeightForm';
 import Modal from './Modal';
 import {saveGuessWeight} from '../Api/fetchApi';
+import {FormattedMessage} from 'react-intl';
 
 export default class WeightGame extends Component {
     constructor(props) {
@@ -53,7 +54,12 @@ export default class WeightGame extends Component {
             <div >
                 <div className="Game-body">
                     <p>The Weight Game</p>
-                    <p>Devinez le poids de naissance de milady et gagnez une bouteille de champagne</p>
+                    <p>
+                        <FormattedMessage
+                            id="WeightGame.gameDescription"
+                            defaultMessage="Devinez le poids de naissance de milady et gagnez une bouteille de champagne"
+                        />
+                    </p>
                     <Button 
                     className="Form-button"
                     disabled={this.state.alreadyPlayed}

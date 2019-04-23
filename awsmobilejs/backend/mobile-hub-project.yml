@@ -8,19 +8,7 @@ features:
           requires-signin: false
           sdk-generation-stage-name: Development
         paths:
-          /date: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/GuessDate-20190418144049.zip
-            description: 'Handler for calls to resource path : /date/{proxy+}'
-            enableCORS: true
-            environment: {}
-            handler: lambda.handler
-            hashcode: VKe7pUBtXW3WMr2Z5yBg5QXkCplOvgea6zvbe2LokJQ=
-            memorySize: '128'
-            modified: '2019-04-20T22:52:48.654+0000'
-            name: GuessDate
-            runtime: nodejs6.10
-            timeout: '3'
-            version: KCKUwdVFI_bJG3oJtmuneYRUAbl._RiM
+          /date: !com.amazonaws.mobilehub.v0.Function {}
           '/date/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
             codeFilename: uploads/GuessDate-20190418144049.zip
             description: 'Handler for calls to resource path : /date/{proxy+}'
@@ -106,19 +94,7 @@ features:
           requires-signin: false
           sdk-generation-stage-name: Development
         paths:
-          /ideas: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/NameRating-20190417212516.zip
-            description: 'Handler for calls to resource path : /names/{proxy+}'
-            enableCORS: true
-            environment: {}
-            handler: lambda.handler
-            hashcode: /3NLSqf+cNsyjr0Y1yuDAqDm12VTavuBMo7VdpYSBwc=
-            memorySize: '128'
-            modified: '2019-04-18T05:11:19.401+0000'
-            name: NameRating
-            runtime: nodejs6.10
-            timeout: '3'
-            version: I8UkKO_jp8VYHUlVfrKgpp.DA2FL.9_W
+          /ideas: !com.amazonaws.mobilehub.v0.Function {}
           '/ideas/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
             codeFilename: uploads/NameRating-20190417212516.zip
             description: 'Handler for calls to resource path : /names/{proxy+}'
@@ -132,19 +108,7 @@ features:
             runtime: nodejs6.10
             timeout: '3'
             version: 8a1SR1m.r6IKrOzgwbBzYm3DkkYlTFWm
-          /names: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/NameRating-20190417212516.zip
-            description: 'Handler for calls to resource path : /names/{proxy+}'
-            enableCORS: true
-            environment: {}
-            handler: lambda.handler
-            hashcode: /3NLSqf+cNsyjr0Y1yuDAqDm12VTavuBMo7VdpYSBwc=
-            memorySize: '128'
-            modified: '2019-04-18T05:11:19.401+0000'
-            name: NameRating
-            runtime: nodejs6.10
-            timeout: '3'
-            version: 3PT5i11AKpvd_DvYHYme1pVZ1xiRvCZI
+          /names: !com.amazonaws.mobilehub.v0.Function {}
           '/names/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
             codeFilename: uploads/NameRating-20190417212516.zip
             description: 'Handler for calls to resource path : /names/{proxy+}'
@@ -164,19 +128,7 @@ features:
           requires-signin: false
           sdk-generation-stage-name: Development
         paths:
-          /weight: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/WeightGuess-20190419220514.zip
-            description: 'Handler for calls to resource path : /weight/{proxy+}'
-            enableCORS: true
-            environment: {}
-            handler: lambda.handler
-            hashcode: 26SZ5qR+7v0Qi9WBoTXJzdGQSL8BqB+0l3hECmtGVoA=
-            memorySize: '128'
-            modified: '2019-04-20T22:52:43.246+0000'
-            name: WeightGuess
-            runtime: nodejs6.10
-            timeout: '3'
-            version: 1pnJh6gjvFK6qD0Ri.oB_kczLZzKe9M.
+          /weight: !com.amazonaws.mobilehub.v0.Function {}
           '/weight/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
             codeFilename: uploads/WeightGuess-20190419220514.zip
             description: 'Handler for calls to resource path : /weight/{proxy+}'

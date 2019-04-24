@@ -2,7 +2,22 @@ import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button, Input, Form, Image, Label} from 'semantic-ui-react';
 import {checkCredentials} from '../Api/fetchApi';
+import {defineMessages} from 'react-intl';
 
+const messages = defineMessages({
+    errorInputLabel: {
+      id: "LoginForm.errorInputLabel",
+      defaultMessage: "Dsl, le mot de passe n'est pas bon",
+    },
+    connectLabel: {
+        id: "LoginForm.connectLabel",
+        defaultMessage: "Se connecter",
+    },
+    placeholder: {
+        id: "LoginForm.placeholder",
+        defaultMessage: "La phrase magique",
+    },
+});
 
 export default class LoginForm extends Component {
     constructor(props) {
@@ -33,7 +48,7 @@ export default class LoginForm extends Component {
                 this.props.loggedInValidation(true);
             }else{
                 this.setState({
-                    invalidCredentialsMessage: "Dsl, le mot de passe n'est pas bon"
+                    invalidCredentialsMessage: messages.errorInputLabel
                 });
                 this.props.loggedInValidation(false);
             }
@@ -54,7 +69,7 @@ export default class LoginForm extends Component {
                             className="Login-input"
                             type="text" 
                             name="password"
-                            placeholder="phrase magique"
+                            placeholder={messages.placeholder}
                             value={this.state.password} onChange={this.handleChange}
                             required/>
                             { invalidCredentialsMessage && (<Label basic color='red' pointing='left'>{ invalidCredentialsMessage }</Label>) }
@@ -62,7 +77,7 @@ export default class LoginForm extends Component {
                     <Button 
                     style={{marginTop: "30px"}}
                     className="Form-button"> 
-                        Se connecter 
+                        {messages.connectLabel} 
                     </Button>
                 </Form>
             </div>

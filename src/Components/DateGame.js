@@ -4,6 +4,18 @@ import { Button} from 'semantic-ui-react';
 import DateForm from './DateForm';
 import Modal from './Modal';
 import {saveGuessDate} from '../Api/fetchApi';
+import {FormattedMessage, defineMessages} from 'react-intl';
+
+const messages = defineMessages({
+    successMessage: {
+      id: "DateGame.dateSavedWithSuccess",
+      defaultMessage: "C'est bon c'est ds la boite, merci !!!",
+    },
+    errorMessage: {
+        id: "DateGame.errorWhileSavingDate",
+        defaultMessage: "Oups, il y a eu une erreur. Rentente ta chance please !!!",
+    },
+});
 
 export default class DateGame extends Component {
     constructor(props) {
@@ -40,10 +52,10 @@ export default class DateGame extends Component {
         console.log("----------------------");
         saveGuessDate(this.props.playerName, birthDate)
         .then(result => {
-            this.props.displayNotification("success", "C'est bon c'est ds la boite, merci !!!");
+            this.props.displayNotification("success", messages.successMessage);
         })
         .catch((error) =>{
-            this.props.displayNotification("error", "Oups, il y a eu une erreur. Rentente ta chance please !!!");
+            this.props.displayNotification("error", messages.errorMessage);
         });
     }
 
@@ -52,12 +64,20 @@ export default class DateGame extends Component {
             <div >
                 <div className="Game-body">
                     <p>The Date Game</p>
-                    <p>Devinez la date de l'accouchement et gagnez une bouteille de champagne</p>
+                    <p>
+                        <FormattedMessage
+                            id="DateGame.gameDescription"
+                            defaultMessage="Devinez la date de l'accouchement et gagnez une bouteille de champagne"
+                        />
+                    </p>
                     <Button 
                     className="Form-button"
                     disabled={this.state.alreadyPlayed}
                     onClick={this.startDateGame}> 
-                        Jouer ! 
+                        <FormattedMessage
+                            id="DateGame.play"
+                            defaultMessage="Jouer !"
+                        />
                     </Button>
                     <Modal 
                         show={this.state.dateGameOpen}

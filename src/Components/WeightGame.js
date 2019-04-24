@@ -4,7 +4,18 @@ import { Button} from 'semantic-ui-react';
 import WeightForm from './WeightForm';
 import Modal from './Modal';
 import {saveGuessWeight} from '../Api/fetchApi';
-import {FormattedMessage} from 'react-intl';
+import {FormattedMessage, defineMessages} from 'react-intl';
+
+const messages = defineMessages({
+    successMessage: {
+      id: "WeightGame.weightSavedWithSuccess",
+      defaultMessage: "C'est bon c'est ds la boite, merci !!!",
+    },
+    errorMessage: {
+        id: "WeightGame.errorWhileSavingWeight",
+        defaultMessage: "Oups, il y a eu une erreur. Rentente ta chance please !!!",
+    },
+});
 
 export default class WeightGame extends Component {
     constructor(props) {
@@ -41,11 +52,11 @@ export default class WeightGame extends Component {
         console.log("----------------------");
         saveGuessWeight(this.props.playerName, weight)
         .then(result => {
-            this.props.displayNotification("success", "C'est bon c'est ds la boite, merci !!!");
+            this.props.displayNotification("success", messages.successMessage);
         })
         .catch((error) =>{
             console.log(error);
-            this.props.displayNotification("error", "Oups, il y a eu une erreur. Rentente ta chance please !!!");
+            this.props.displayNotification("error", messages.errorMessage);
         });
     }
 
@@ -64,7 +75,10 @@ export default class WeightGame extends Component {
                     className="Form-button"
                     disabled={this.state.alreadyPlayed}
                     onClick={this.startWeightGame}> 
-                        Jouer ! 
+                        <FormattedMessage
+                            id="WeightGame.play"
+                            defaultMessage="Jouer !"
+                        />
                     </Button>
                     <Modal 
                         show={this.state.weightGameOpen}

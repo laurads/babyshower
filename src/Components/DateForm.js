@@ -5,6 +5,14 @@ import {DatetimePicker} from 'rc-datetime-picker';
 import moment from 'moment';
 import 'rc-datetime-picker/dist/picker.css';
 import 'font-awesome/css/font-awesome.min.css';
+import {FormattedMessage, defineMessages} from 'react-intl';
+
+const messages = defineMessages({
+    validateLabel: {
+      id: "GameForm.validate",
+      defaultMessage: "Valider",
+    },
+});
 
 export default class DateForm extends Component {
     constructor(props) {
@@ -33,7 +41,12 @@ export default class DateForm extends Component {
         return (
             <div >
                 <Form onSubmit={this.handleValidateSubmit} className="Game-form">
-                <p> Quand pensez-vous que bébé #3 va pointer le bout de son nez ? </p>
+                <p> 
+                    <FormattedMessage
+                        id="DateForm.question"
+                        defaultMessage="Quand pensez-vous que bébé #3 va pointer le bout de son nez ?"
+                    />
+                </p>
                 <p className="Form-label-clue"> Indice : <br/>prévu le 31 Mai </p>
                 <div className="Game-date">
                     <DatetimePicker
@@ -49,7 +62,7 @@ export default class DateForm extends Component {
                     <Button 
                         style={{marginTop: '10px'}}
                         className="Form-button"> 
-                            Valider
+                            {messages.validateLabel}
                     </Button>
                 </div>
             </Form>

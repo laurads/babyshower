@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button, Input, Form} from 'semantic-ui-react';
+import {FormattedMessage, defineMessages} from 'react-intl';
+
+const messages = defineMessages({
+    validateLabel: {
+      id: "NameForm.validate",
+      defaultMessage: "Valider",
+    },
+    namePlaceholder: {
+        id: "NameForm.name-placeholder",
+        defaultMessage: "Ton nom",
+      },
+});
 
 export default class NameForm extends Component {
     constructor(props) {
@@ -33,18 +45,23 @@ export default class NameForm extends Component {
             <div >
                 {!this.state.nameValidated && 
                     <Form onSubmit={this.storeName} className="Component-form">
-                        <label className="Form-label">Rentre ton nom pour pouvoir accéder aux jeux</label>
+                        <label className="Form-label">
+                            <FormattedMessage
+                                id="NameForm.question"
+                                defaultMessage="Rentre ton nom pour pouvoir accéder aux jeux"
+                            />
+                        </label>
                         <div className="Form-row">
                             <Input 
                                 className="Form-input"
                                 type="text" 
                                 name="name"
-                                placeholder="Ton nom"
+                                placeholder={messages.namePlaceholder}
                                 value={this.state.name} onChange={this.handleChange}
                                 required/>                    
                             <Button 
                             className="Form-button"> 
-                                Valider 
+                                {messages.validateLabel} 
                             </Button>
                         </div>
                     </Form>

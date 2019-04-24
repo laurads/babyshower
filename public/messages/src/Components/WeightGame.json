@@ -1,0 +1,18 @@
+[
+  {
+    "id": "WeightGame.weightSavedWithSuccess",
+    "defaultMessage": "C'est bon c'est ds la boite, merci !!!"
+  },
+  {
+    "id": "WeightGame.errorWhileSavingWeight",
+    "defaultMessage": "Oups, il y a eu une erreur. Rentente ta chance please !!!"
+  },
+  {
+    "id": "WeightGame.gameDescription",
+    "defaultMessage": "Devinez le poids de naissance de milady et gagnez une bouteille de champagne"
+  },
+  {
+    "id": "WeightGame.play",
+    "defaultMessage": "Jouer !"
+  }
+]

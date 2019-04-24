@@ -1,9 +1,8 @@
 {
-    "presets": ["react", "es2015", "stage-2"],
-    "plugins": [
-        ["react-intl", {
-          "messagesDir": "./public/messages/"
-        }]
-      ]
-  }
-  
+  "presets":["react-app", "@babel/env"],
+  "plugins": [
+    ["react-intl", {
+      "messagesDir": "./public/messages/"
+    }]
+  ]
+}

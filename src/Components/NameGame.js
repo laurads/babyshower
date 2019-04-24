@@ -4,6 +4,18 @@ import { Button} from 'semantic-ui-react';
 import Modal from './Modal';
 import NameRatingForm from './NameRatingForm';
 import {saveNameRatings, saveNameIdeas} from '../Api/fetchApi';
+import {FormattedMessage, defineMessages} from 'react-intl';
+
+const messages = defineMessages({
+    successMessage: {
+      id: "NameGame.namesSavedWithSuccess",
+      defaultMessage: "C'est bon c'est ds la boite, merci !!!",
+    },
+    errorMessage: {
+        id: "NameGame.errorWhileSavingNames",
+        defaultMessage: "Oups, il y a eu une erreur. Rentente ta chance please !!!",
+    },
+});
 
 export default class NameGame extends Component {
     constructor(props) {
@@ -70,11 +82,11 @@ export default class NameGame extends Component {
             return saveNameIdeas(this.props.playerName,otherName);
         })
         .then (result => {
-            this.props.displayNotification("success", "C'est bon c'est ds la boite, merci !!!");
+            this.props.displayNotification("success", messages.successMessage);
         })
         .catch((error) => {
             console.log(error);
-            this.props.displayNotification("error", "Oups, il y a eu une erreur. Rentente ta chance please !!!");
+            this.props.displayNotification("error", messages.errorMessage);
         });
     }
 
@@ -83,12 +95,20 @@ export default class NameGame extends Component {
             <div >
                 <div className="Game-body">
                     <p>The Name Game</p>
-                    <p>Aidez-nous à nous décider pour un prénom</p>
+                    <p>
+                        <FormattedMessage
+                            id="NameGame.gameDescription"
+                            defaultMessage="Aidez-nous à nous décider pour un prénom"
+                        />
+                    </p>
                     <Button 
                     className="Form-button"
                     disabled={this.state.alreadyPlayed}
                     onClick={this.startNameGame}> 
-                        Jouer ! 
+                        <FormattedMessage
+                            id="NameGame.play"
+                            defaultMessage="Jouer !"
+                        />
                     </Button>
                     <Modal 
                         show={this.state.nameGameOpen}

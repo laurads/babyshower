@@ -1,0 +1,18 @@
+[
+  {
+    "id": "DateGame.dateSavedWithSuccess",
+    "defaultMessage": "C'est bon c'est ds la boite, merci !!!"
+  },
+  {
+    "id": "DateGame.errorWhileSavingDate",
+    "defaultMessage": "Oups, il y a eu une erreur. Rentente ta chance please !!!"
+  },
+  {
+    "id": "DateGame.gameDescription",
+    "defaultMessage": "Devinez la date de l'accouchement et gagnez une bouteille de champagne"
+  },
+  {
+    "id": "DateGame.play",
+    "defaultMessage": "Jouer !"
+  }
+]

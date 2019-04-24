@@ -2,7 +2,18 @@ import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button, Form, Input} from 'semantic-ui-react';
 import NameRating from './NameRating';
+import {FormattedMessage, defineMessages} from 'react-intl';
 
+const messages = defineMessages({
+    validateLabel: {
+      id: "NameRatingForm.validate",
+      defaultMessage: "Valider",
+    },
+    ideaPlaceholder: {
+        id: "NameRatingForm.idea-placeholder",
+        defaultMessage: "Ta proposition",
+      },
+});
 
 export default class NameRatingForm extends Component {
     constructor(props) {
@@ -53,24 +64,34 @@ export default class NameRatingForm extends Component {
         return (
             <div >
                 <Form onSubmit={this.handleSubmit} className="Game-form">
-                    <p> Notez les prénoms en fonction de vos préférences </p>
+                    <p>  
+                        <FormattedMessage
+                            id="NameRatingForm.question1"
+                            defaultMessage="Notez les prénoms en fonction de vos préférences"
+                        />
+                    </p>
                     <div className="Game-row">
                         {this.createNameRatings()}
                     </div>
-                    <p> As-tu une autre proposition de prénom ? </p>
+                    <p>  
+                        <FormattedMessage
+                            id="NameRatingForm.question2"
+                            defaultMessage="As-tu une autre proposition de prénom ?"
+                        />
+                    </p>
                     <div className="Game-row">
                         <Input 
                             className="Game-input"
                             type="text" 
                             name="other"
-                            placeholder="Ta proposition"
+                            placeholder={messages.ideaPlaceholder}
                             value={this.state.other} onChange={this.handleChange}
                             />  
                     </div>
                     <Button 
                     style={{marginTop: '10px'}}
                     className="Form-button"> 
-                        Valider
+                        {messages.validateLabel}
                     </Button>
                 </Form>
             </div>

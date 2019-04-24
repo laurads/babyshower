@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button, Form, Input} from 'semantic-ui-react';
+import {FormattedMessage, defineMessages} from 'react-intl';
+
+const messages = defineMessages({
+    validateLabel: {
+      id: "WeightForm.validate",
+      defaultMessage: "Valider",
+    },
+});
 
 export default class WeightForm extends Component {
     constructor(props) {
@@ -28,8 +36,18 @@ export default class WeightForm extends Component {
         return (
             <div >
                 <Form onSubmit={this.handleValidateSubmit} className="Game-form">
-                <p> Combien pensez-vous que bébé #3 va peser à la naissance ? </p>
-                <p className="Form-label-clue"> Indice : <br/> Nolan et Matis pesaient respectivement 3.450kg et 3.700kg </p>
+                <p> 
+                    <FormattedMessage
+                        id="WeightForm.question"
+                        defaultMessage="Combien pensez-vous que bébé #3 va peser à la naissance ?"
+                    />
+                </p>
+                <p className="Form-label-clue"> 
+                    <FormattedMessage
+                        id="WeightForm.clue"
+                        defaultMessage="Indice : <br/> Nolan et Matis pesaient respectivement 3.450kg et 3.700kg "
+                    />
+                </p>
                 <div className="Form-row">
                     <Input 
                         className="Weight-input"
@@ -44,7 +62,7 @@ export default class WeightForm extends Component {
                     <Button 
                         style={{marginTop: '10px'}}
                         className="Form-button"> 
-                            Valider
+                            {messages.validateLabel}
                     </Button>
                 </div>
             </Form>

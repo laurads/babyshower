@@ -1,0 +1,14 @@
+[
+  {
+    "id": "NameForm.validate",
+    "defaultMessage": "Valider"
+  },
+  {
+    "id": "NameForm.name-placeholder",
+    "defaultMessage": "Ton nom"
+  },
+  {
+    "id": "NameForm.question",
+    "defaultMessage": "Rentre ton nom pour pouvoir accéder aux jeux"
+  }
+]

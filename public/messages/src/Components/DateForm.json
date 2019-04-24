@@ -1,0 +1,10 @@
+[
+  {
+    "id": "GameForm.validate",
+    "defaultMessage": "Valider"
+  },
+  {
+    "id": "DateForm.question",
+    "defaultMessage": "Quand pensez-vous que bébé #3 va pointer le bout de son nez ?"
+  }
+]

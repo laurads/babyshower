@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button, Form, Input} from 'semantic-ui-react';
-import {FormattedMessage, defineMessages} from 'react-intl';
+import {FormattedMessage} from 'react-intl';
 
-const messages = defineMessages({
-    validateLabel: {
-      id: "WeightForm.validate",
-      defaultMessage: "Valider",
-    },
-});
-
-export default class WeightForm extends Component {
+class WeightForm extends Component {
     constructor(props) {
     super(props);
         this.state = {
@@ -45,7 +38,12 @@ export default class WeightForm extends Component {
                 <p className="Form-label-clue"> 
                     <FormattedMessage
                         id="WeightForm.clue"
-                        defaultMessage="Indice : <br/> Nolan et Matis pesaient respectivement 3.450kg et 3.700kg "
+                        defaultMessage="Indice :"
+                    />
+                    <br/> 
+                    <FormattedMessage
+                        id="WeightForm.clueDescription"
+                        defaultMessage="Nolan et Matis pesaient respectivement 3.450kg et 3.700kg "
                     />
                 </p>
                 <div className="Form-row">
@@ -62,7 +60,10 @@ export default class WeightForm extends Component {
                     <Button 
                         style={{marginTop: '10px'}}
                         className="Form-button"> 
-                            {messages.validateLabel}
+                            <FormattedMessage
+                                id="WeightForm.validate"
+                                defaultMessage="Valider"
+                            />
                     </Button>
                 </div>
             </Form>
@@ -70,3 +71,5 @@ export default class WeightForm extends Component {
         );
     }
 }
+
+export default WeightForm;

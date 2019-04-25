@@ -4,7 +4,7 @@ import { Button} from 'semantic-ui-react';
 import Modal from './Modal';
 import NameRatingForm from './NameRatingForm';
 import {saveNameRatings, saveNameIdeas} from '../Api/fetchApi';
-import {FormattedMessage, defineMessages} from 'react-intl';
+import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 const messages = defineMessages({
     successMessage: {
@@ -17,7 +17,7 @@ const messages = defineMessages({
     },
 });
 
-export default class NameGame extends Component {
+class NameGame extends Component {
     constructor(props) {
     super(props);
         this.state = {
@@ -77,16 +77,19 @@ export default class NameGame extends Component {
         console.log(names);
         console.log(otherName);
         console.log("----------------------");
+        const {intl} = this.props;
+        const successMessage = intl.formatMessage(messages.successMessage);
+        const errorMessage = intl.formatMessage(messages.errorMessage);
         saveNameRatings(this.props.playerName, names)
         .then(result => {
             return saveNameIdeas(this.props.playerName,otherName);
         })
         .then (result => {
-            this.props.displayNotification("success", messages.successMessage);
+            this.props.displayNotification("success", successMessage);
         })
         .catch((error) => {
             console.log(error);
-            this.props.displayNotification("error", messages.errorMessage);
+            this.props.displayNotification("error", errorMessage);
         });
     }
 
@@ -124,3 +127,5 @@ export default class NameGame extends Component {
         );
     }
 }
+
+export default injectIntl(NameGame);

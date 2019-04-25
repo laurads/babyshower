@@ -12,7 +12,7 @@ export default class PictureGallery extends Component {
         };
     }
 
-    createGalleryPictures = () => {
+    createGalleryPictures () {
         
         let picturesId = []
         for(let i=1;i<=22;i++){

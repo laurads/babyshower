@@ -1,14 +1,22 @@
 [
   {
-    "id": "NameForm.validate",
-    "defaultMessage": "Valider"
-  },
-  {
     "id": "NameForm.name-placeholder",
     "defaultMessage": "Ton nom"
   },
   {
     "id": "NameForm.question",
     "defaultMessage": "Rentre ton nom pour pouvoir accéder aux jeux"
+  },
+  {
+    "id": "NameForm.validate",
+    "defaultMessage": "Valider"
+  },
+  {
+    "id": "NameForm.hiTitle",
+    "defaultMessage": "Salut {name}"
+  },
+  {
+    "id": "NameForm.hiDescription",
+    "defaultMessage": "Nous avons besoin de ton aide pour trouver un prénom pour notre baby girl, et en prime tu peux jouer pour gagner une bouteille de champagne"
   }
 ]

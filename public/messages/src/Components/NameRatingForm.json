@@ -1,9 +1,5 @@
 [
   {
-    "id": "NameRatingForm.validate",
-    "defaultMessage": "Valider"
-  },
-  {
     "id": "NameRatingForm.idea-placeholder",
     "defaultMessage": "Ta proposition"
   },
@@ -14,5 +10,9 @@
   {
     "id": "NameRatingForm.question2",
     "defaultMessage": "As-tu une autre proposition de prénom ?"
+  },
+  {
+    "id": "NameRatingForm.validate",
+    "defaultMessage": "Valider"
   }
 ]

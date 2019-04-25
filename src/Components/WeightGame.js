@@ -4,7 +4,7 @@ import { Button} from 'semantic-ui-react';
 import WeightForm from './WeightForm';
 import Modal from './Modal';
 import {saveGuessWeight} from '../Api/fetchApi';
-import {FormattedMessage, defineMessages} from 'react-intl';
+import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 const messages = defineMessages({
     successMessage: {
@@ -17,7 +17,7 @@ const messages = defineMessages({
     },
 });
 
-export default class WeightGame extends Component {
+class WeightGame extends Component {
     constructor(props) {
     super(props);
         this.state = {
@@ -50,13 +50,16 @@ export default class WeightGame extends Component {
         console.log("TO SAVE IN DB")
         console.log(weight);
         console.log("----------------------");
+        const {intl} = this.props;
+        const successMessage = intl.formatMessage(messages.successMessage);
+        const errorMessage = intl.formatMessage(messages.errorMessage);
         saveGuessWeight(this.props.playerName, weight)
         .then(result => {
-            this.props.displayNotification("success", messages.successMessage);
+            this.props.displayNotification("success", successMessage);
         })
         .catch((error) =>{
             console.log(error);
-            this.props.displayNotification("error", messages.errorMessage);
+            this.props.displayNotification("error", errorMessage);
         });
     }
 
@@ -93,3 +96,5 @@ export default class WeightGame extends Component {
         );
     }
 }
+
+export default injectIntl(WeightGame);

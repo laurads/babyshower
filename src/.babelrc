@@ -1,8 +1,0 @@
-{
-  "presets":["react-app", "@babel/env"],
-  "plugins": [
-    ["react-intl", {
-      "messagesDir": "./public/messages/"
-    }]
-  ]
-}

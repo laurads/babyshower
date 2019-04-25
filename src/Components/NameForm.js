@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button, Input, Form} from 'semantic-ui-react';
-import {FormattedMessage, defineMessages} from 'react-intl';
+import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 const messages = defineMessages({
-    validateLabel: {
-      id: "NameForm.validate",
-      defaultMessage: "Valider",
-    },
     namePlaceholder: {
         id: "NameForm.name-placeholder",
         defaultMessage: "Ton nom",
       },
 });
 
-export default class NameForm extends Component {
+class NameForm extends Component {
     constructor(props) {
     super(props);
         this.state = {
@@ -41,6 +37,9 @@ export default class NameForm extends Component {
     }
 
     render() {
+        const {intl} = this.props;
+        const {name} = this.state;
+        const placeholder = intl.formatMessage(messages.namePlaceholder);
         return (
             <div >
                 {!this.state.nameValidated && 
@@ -56,23 +55,39 @@ export default class NameForm extends Component {
                                 className="Form-input"
                                 type="text" 
                                 name="name"
-                                placeholder={messages.namePlaceholder}
+                                placeholder={placeholder}
                                 value={this.state.name} onChange={this.handleChange}
                                 required/>                    
                             <Button 
                             className="Form-button"> 
-                                {messages.validateLabel} 
+                                <FormattedMessage
+                                    id="NameForm.validate"
+                                    defaultMessage="Valider"
+                                />
                             </Button>
                         </div>
                     </Form>
                 }
                 {this.state.nameValidated &&
                     <div className="Welcome-label">
-                        <div className="Welcome-title"> Salut {this.state.name} </div>
-                        <div className="Welcome-description"> Nous avons besoin de ton aide pour trouver un prénom pour notre baby girl, et en prime tu peux jouer pour gagner une bouteille de champagne </div>
+                        <div className="Welcome-title">
+                            <FormattedMessage
+                                id="NameForm.hiTitle"
+                                defaultMessage={'Salut {name}'}
+                                values={{name:name }}
+                            />
+                        </div>
+                        <div className="Welcome-description">  
+                            <FormattedMessage
+                                id="NameForm.hiDescription"
+                                defaultMessage="Nous avons besoin de ton aide pour trouver un prénom pour notre baby girl, et en prime tu peux jouer pour gagner une bouteille de champagne"
+                            />
+                        </div>
                     </div>
                 }
             </div>
         );
     }
 }
+
+export default injectIntl(NameForm);

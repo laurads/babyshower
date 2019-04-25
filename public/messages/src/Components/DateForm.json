@@ -1,10 +1,18 @@
 [
   {
-    "id": "GameForm.validate",
-    "defaultMessage": "Valider"
-  },
-  {
     "id": "DateForm.question",
     "defaultMessage": "Quand pensez-vous que bébé #3 va pointer le bout de son nez ?"
+  },
+  {
+    "id": "DateForm.clue",
+    "defaultMessage": "Indice :"
+  },
+  {
+    "id": "DateForm.clueDescription",
+    "defaultMessage": "prévu le 31 Mai"
+  },
+  {
+    "id": "DateForm.validate",
+    "defaultMessage": "Valider"
   }
 ]

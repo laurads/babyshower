@@ -4,11 +4,11 @@
     "defaultMessage": "Dsl, le mot de passe n'est pas bon"
   },
   {
-    "id": "LoginForm.connectLabel",
-    "defaultMessage": "Se connecter"
-  },
-  {
     "id": "LoginForm.placeholder",
     "defaultMessage": "La phrase magique"
+  },
+  {
+    "id": "LoginForm.connectLabel",
+    "defaultMessage": "Se connecter"
   }
 ]

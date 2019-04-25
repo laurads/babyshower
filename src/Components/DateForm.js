@@ -5,16 +5,9 @@ import {DatetimePicker} from 'rc-datetime-picker';
 import moment from 'moment';
 import 'rc-datetime-picker/dist/picker.css';
 import 'font-awesome/css/font-awesome.min.css';
-import {FormattedMessage, defineMessages} from 'react-intl';
+import {FormattedMessage} from 'react-intl';
 
-const messages = defineMessages({
-    validateLabel: {
-      id: "GameForm.validate",
-      defaultMessage: "Valider",
-    },
-});
-
-export default class DateForm extends Component {
+class DateForm extends Component {
     constructor(props) {
     super(props);
         this.state = {
@@ -47,7 +40,17 @@ export default class DateForm extends Component {
                         defaultMessage="Quand pensez-vous que bébé #3 va pointer le bout de son nez ?"
                     />
                 </p>
-                <p className="Form-label-clue"> Indice : <br/>prévu le 31 Mai </p>
+                <p className="Form-label-clue"> 
+                    <FormattedMessage
+                        id="DateForm.clue"
+                        defaultMessage="Indice :"
+                    />
+                    <br/>
+                    <FormattedMessage
+                        id="DateForm.clueDescription"
+                        defaultMessage="prévu le 31 Mai "
+                    />
+                </p>
                 <div className="Game-date">
                     <DatetimePicker
                         moment={this.state.birthDate}
@@ -62,7 +65,10 @@ export default class DateForm extends Component {
                     <Button 
                         style={{marginTop: '10px'}}
                         className="Form-button"> 
-                            {messages.validateLabel}
+                            <FormattedMessage
+                                id="DateForm.validate"
+                                defaultMessage="Valider"
+                            />
                     </Button>
                 </div>
             </Form>
@@ -70,3 +76,5 @@ export default class DateForm extends Component {
         );
     }
 }
+
+export default DateForm;

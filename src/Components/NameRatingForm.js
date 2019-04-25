@@ -2,20 +2,16 @@ import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button, Form, Input} from 'semantic-ui-react';
 import NameRating from './NameRating';
-import {FormattedMessage, defineMessages} from 'react-intl';
+import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 const messages = defineMessages({
-    validateLabel: {
-      id: "NameRatingForm.validate",
-      defaultMessage: "Valider",
-    },
     ideaPlaceholder: {
         id: "NameRatingForm.idea-placeholder",
         defaultMessage: "Ta proposition",
       },
 });
 
-export default class NameRatingForm extends Component {
+class NameRatingForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -61,6 +57,8 @@ export default class NameRatingForm extends Component {
     }
 
     render() {
+        const {intl} = this.props;
+        const placeholder = intl.formatMessage(messages.ideaPlaceholder);
         return (
             <div >
                 <Form onSubmit={this.handleSubmit} className="Game-form">
@@ -84,17 +82,22 @@ export default class NameRatingForm extends Component {
                             className="Game-input"
                             type="text" 
                             name="other"
-                            placeholder={messages.ideaPlaceholder}
+                            placeholder={placeholder}
                             value={this.state.other} onChange={this.handleChange}
                             />  
                     </div>
                     <Button 
                     style={{marginTop: '10px'}}
                     className="Form-button"> 
-                        {messages.validateLabel}
+                        <FormattedMessage
+                            id="NameRatingForm.validate"
+                            defaultMessage="Valider"
+                        />
                     </Button>
                 </Form>
             </div>
         );
     }
 }
+
+export default injectIntl(NameRatingForm);

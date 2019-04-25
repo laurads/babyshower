@@ -4,7 +4,7 @@ import { Button} from 'semantic-ui-react';
 import DateForm from './DateForm';
 import Modal from './Modal';
 import {saveGuessDate} from '../Api/fetchApi';
-import {FormattedMessage, defineMessages} from 'react-intl';
+import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 const messages = defineMessages({
     successMessage: {
@@ -17,7 +17,7 @@ const messages = defineMessages({
     },
 });
 
-export default class DateGame extends Component {
+class DateGame extends Component {
     constructor(props) {
     super(props);
         this.state = {
@@ -50,12 +50,15 @@ export default class DateGame extends Component {
         console.log("TO SAVE IN DB")
         console.log(birthDate);
         console.log("----------------------");
+        const {intl} = this.props;
+        const successMessage = intl.formatMessage(messages.successMessage);
+        const errorMessage = intl.formatMessage(messages.errorMessage);
         saveGuessDate(this.props.playerName, birthDate)
         .then(result => {
-            this.props.displayNotification("success", messages.successMessage);
+            this.props.displayNotification("success", successMessage);
         })
         .catch((error) =>{
-            this.props.displayNotification("error", messages.errorMessage);
+            this.props.displayNotification("error", errorMessage);
         });
     }
 
@@ -92,3 +95,5 @@ export default class DateGame extends Component {
         );
     }
 }
+
+export default injectIntl(DateGame);

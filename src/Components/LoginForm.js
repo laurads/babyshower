@@ -2,16 +2,12 @@ import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button, Input, Form, Image, Label} from 'semantic-ui-react';
 import {checkCredentials} from '../Api/fetchApi';
-import {defineMessages} from 'react-intl';
+import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
 const messages = defineMessages({
     errorInputLabel: {
       id: "LoginForm.errorInputLabel",
       defaultMessage: "Dsl, le mot de passe n'est pas bon",
-    },
-    connectLabel: {
-        id: "LoginForm.connectLabel",
-        defaultMessage: "Se connecter",
     },
     placeholder: {
         id: "LoginForm.placeholder",
@@ -19,7 +15,7 @@ const messages = defineMessages({
     },
 });
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
     constructor(props) {
     super(props);
         this.state = {
@@ -39,6 +35,8 @@ export default class LoginForm extends Component {
     
     login = (event) => {
         event.preventDefault();
+        const {intl} = this.props;
+        const errorMessage = intl.formatMessage(messages.errorInputLabel);
         checkCredentials(this.state.password)
         .then(result => {
             if(result==="OK"){
@@ -48,7 +46,7 @@ export default class LoginForm extends Component {
                 this.props.loggedInValidation(true);
             }else{
                 this.setState({
-                    invalidCredentialsMessage: messages.errorInputLabel
+                    invalidCredentialsMessage: errorMessage
                 });
                 this.props.loggedInValidation(false);
             }
@@ -60,6 +58,8 @@ export default class LoginForm extends Component {
 
     render() {
         const {invalidCredentialsMessage} = this.state;
+        const {intl} = this.props;
+        const placeholder = intl.formatMessage(messages.placeholder);
         return (
             <div >
                 <Form onSubmit={this.login} className="Login-form">
@@ -69,7 +69,7 @@ export default class LoginForm extends Component {
                             className="Login-input"
                             type="text" 
                             name="password"
-                            placeholder={messages.placeholder}
+                            placeholder={placeholder}
                             value={this.state.password} onChange={this.handleChange}
                             required/>
                             { invalidCredentialsMessage && (<Label basic color='red' pointing='left'>{ invalidCredentialsMessage }</Label>) }
@@ -77,10 +77,15 @@ export default class LoginForm extends Component {
                     <Button 
                     style={{marginTop: "30px"}}
                     className="Form-button"> 
-                        {messages.connectLabel} 
+                        <FormattedMessage
+                            id="LoginForm.connectLabel"
+                            defaultMessage="Se connecter"
+                        />
                     </Button>
                 </Form>
             </div>
         );
     }
 }
+
+export default injectIntl(LoginForm);

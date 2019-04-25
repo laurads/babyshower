@@ -1,0 +1,18 @@
+[
+  {
+    "id": "WeightForm.question",
+    "defaultMessage": "Combien pensez-vous que bébé #3 va peser à la naissance ?"
+  },
+  {
+    "id": "WeightForm.clue",
+    "defaultMessage": "Indice :"
+  },
+  {
+    "id": "WeightForm.clueDescription",
+    "defaultMessage": "Nolan et Matis pesaient respectivement 3.450kg et 3.700kg"
+  },
+  {
+    "id": "WeightForm.validate",
+    "defaultMessage": "Valider"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "NameGame.namesSavedWithSuccess",
+    "defaultMessage": "C'est bon c'est ds la boite, merci !!!"
+  },
+  {
+    "id": "NameGame.errorWhileSavingNames",
+    "defaultMessage": "Oups, il y a eu une erreur. Rentente ta chance please !!!"
+  },
+  {
+    "id": "NameGame.gameDescription",
+    "defaultMessage": "Aidez-nous à nous décider pour un prénom"
+  },
+  {
+    "id": "NameGame.play",
+    "defaultMessage": "Jouer !"
+  }
+]

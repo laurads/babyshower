@@ -5,11 +5,7 @@
   },
   {
     "id": "WeightForm.clue",
-    "defaultMessage": "Indice :"
-  },
-  {
-    "id": "WeightForm.clueDescription",
-    "defaultMessage": "Nolan et Matis pesaient respectivement 3.450kg et 3.700kg"
+    "defaultMessage": "Indice : Nolan et Matis pesaient respectivement 3.450kg et 3.700kg"
   },
   {
     "id": "WeightForm.validate",

@@ -60,42 +60,41 @@ class NameRatingForm extends Component {
         const {intl} = this.props;
         const placeholder = intl.formatMessage(messages.ideaPlaceholder);
         return (
-            <div >
-                <Form onSubmit={this.handleSubmit} className="Game-form">
-                    <p>  
-                        <FormattedMessage
-                            id="NameRatingForm.question1"
-                            defaultMessage="Notez les prénoms en fonction de vos préférences"
-                        />
-                    </p>
-                    <div className="Game-row">
-                        {this.createNameRatings()}
-                    </div>
+            <Form onSubmit={this.handleSubmit} className="Game-form">
+                <p>  
+                    <FormattedMessage
+                        id="NameRatingForm.question1"
+                        defaultMessage="Notez les prénoms en fonction de vos préférences"
+                    />
+                </p>
+                <div className="Game-row">
+                    {this.createNameRatings()}
+                </div>
+                <div className="Game-row">
                     <p>  
                         <FormattedMessage
                             id="NameRatingForm.question2"
                             defaultMessage="As-tu une autre proposition de prénom ?"
                         />
                     </p>
-                    <div className="Game-row">
-                        <Input 
-                            className="Game-input"
-                            type="text" 
-                            name="other"
-                            placeholder={placeholder}
-                            value={this.state.other} onChange={this.handleChange}
-                            />  
-                    </div>
+                    <Input 
+                        className="Game-input"
+                        type="text" 
+                        name="other"
+                        placeholder={placeholder}
+                        value={this.state.other} onChange={this.handleChange}
+                        />  
+                </div>
+                <div className="Game-row">
                     <Button 
-                    style={{marginTop: '10px'}}
                     className="Form-button"> 
                         <FormattedMessage
                             id="NameRatingForm.validate"
                             defaultMessage="Valider"
                         />
                     </Button>
-                </Form>
-            </div>
+                </div>
+            </Form>
         );
     }
 }

@@ -61,29 +61,27 @@ class LoginForm extends Component {
         const {intl} = this.props;
         const placeholder = intl.formatMessage(messages.placeholder);
         return (
-            <div >
-                <Form onSubmit={this.login} className="Login-form">
-                    <div className="Form-row">
-                        <Image style={{marginRight: "10px"}} className="Form-img" src='./Icons/login.png' avatar />
-                        <Input 
-                            className="Login-input"
-                            type="text" 
-                            name="password"
-                            placeholder={placeholder}
-                            value={this.state.password} onChange={this.handleChange}
-                            required/>
-                            { invalidCredentialsMessage && (<Label basic color='red' pointing='left'>{ invalidCredentialsMessage }</Label>) }
-                    </div>
-                    <Button 
-                    style={{marginTop: "30px"}}
-                    className="Form-button"> 
-                        <FormattedMessage
-                            id="LoginForm.connectLabel"
-                            defaultMessage="Se connecter"
-                        />
-                    </Button>
-                </Form>
-            </div>
+            <Form onSubmit={this.login} className="Login-form">
+                <div className="Form-row">
+                    <Image style={{marginRight: "10px"}} className="Form-img" src='./Icons/login.png' avatar />
+                    <Input 
+                        className="Login-input"
+                        type="text" 
+                        name="password"
+                        placeholder={placeholder}
+                        value={this.state.password} onChange={this.handleChange}
+                        required/>
+                        { invalidCredentialsMessage && (<Label basic color='red' pointing='left'>{ invalidCredentialsMessage }</Label>) }
+                </div>
+                <Button 
+                style={{marginTop: "20px"}}
+                className="Form-button"> 
+                    <FormattedMessage
+                        id="LoginForm.connectLabel"
+                        defaultMessage="Se connecter"
+                    />
+                </Button>
+            </Form>
         );
     }
 }

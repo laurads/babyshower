@@ -38,12 +38,7 @@ class WeightForm extends Component {
                 <p className="Form-label-clue"> 
                     <FormattedMessage
                         id="WeightForm.clue"
-                        defaultMessage="Indice :"
-                    />
-                    <br/> 
-                    <FormattedMessage
-                        id="WeightForm.clueDescription"
-                        defaultMessage="Nolan et Matis pesaient respectivement 3.450kg et 3.700kg "
+                        defaultMessage="Indice : Nolan et Matis pesaient respectivement 3.450kg et 3.700kg"
                     />
                 </p>
                 <div className="Form-row">
@@ -56,7 +51,7 @@ class WeightForm extends Component {
                         required/>     
                     <div className="Form-label"> kg </div>
                 </div>
-                <div>
+                <div className="Game-row">
                     <Button 
                         style={{marginTop: '10px'}}
                         className="Form-button"> 

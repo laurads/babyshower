@@ -5,9 +5,7 @@ export default class Header extends Component {
 
     render() {
         return (
-            <div>
-                <PictureGallery/>
-            </div>
+            <PictureGallery/>
         );
     }
 }

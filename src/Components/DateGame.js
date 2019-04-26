@@ -64,33 +64,31 @@ class DateGame extends Component {
 
     render() {
         return (
-            <div >
-                <div className="Game-body">
-                    <p>The Date Game</p>
-                    <p>
-                        <FormattedMessage
-                            id="DateGame.gameDescription"
-                            defaultMessage="Devinez la date de l'accouchement et gagnez une bouteille de champagne"
-                        />
-                    </p>
-                    <Button 
-                    className="Form-button"
-                    disabled={this.state.alreadyPlayed}
-                    onClick={this.startDateGame}> 
-                        <FormattedMessage
-                            id="DateGame.play"
-                            defaultMessage="Jouer !"
-                        />
-                    </Button>
-                    <Modal 
-                        show={this.state.dateGameOpen}
-                        onClose={this.toggleDateGameModal}
-                        title="The Date Game">
-                        <DateForm
-                            validateForm={this.validateForm}
-                        />
-                    </Modal>
-                </div>
+            <div className="Game-body">
+                <p>The Date Game</p>
+                <p>
+                    <FormattedMessage
+                        id="DateGame.gameDescription"
+                        defaultMessage="Devinez la date de l'accouchement et gagnez une bouteille de champagne"
+                    />
+                </p>
+                <Button 
+                className="Form-button"
+                disabled={this.state.alreadyPlayed}
+                onClick={this.startDateGame}> 
+                    <FormattedMessage
+                        id="DateGame.play"
+                        defaultMessage="Jouer !"
+                    />
+                </Button>
+                <Modal 
+                    show={this.state.dateGameOpen}
+                    onClose={this.toggleDateGameModal}
+                    title="The Date Game">
+                    <DateForm
+                        validateForm={this.validateForm}
+                    />
+                </Modal>
             </div>
         );
     }

@@ -9,7 +9,6 @@ class LoginContainer extends Component {
             <div className="Login-body" 
             style={{}}>
                 <LoginForm 
-                    style={{flex:1}}
                     loggedInValidation={this.props.loggedInValidation}
                 />
             </div>

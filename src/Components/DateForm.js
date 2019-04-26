@@ -43,12 +43,7 @@ class DateForm extends Component {
                 <p className="Form-label-clue"> 
                     <FormattedMessage
                         id="DateForm.clue"
-                        defaultMessage="Indice :"
-                    />
-                    <br/>
-                    <FormattedMessage
-                        id="DateForm.clueDescription"
-                        defaultMessage="prévu le 31 Mai "
+                        defaultMessage="Indice : prévu le 31 Mai "
                     />
                 </p>
                 <div className="Game-date">
@@ -61,9 +56,8 @@ class DateForm extends Component {
                         maxDate={maxDate}
                     />    
                 </div>
-                <div>
+                <div className="Game-row">
                     <Button 
-                        style={{marginTop: '10px'}}
                         className="Form-button"> 
                             <FormattedMessage
                                 id="DateForm.validate"

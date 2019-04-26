@@ -65,33 +65,31 @@ class WeightGame extends Component {
 
     render() {
         return (
-            <div >
-                <div className="Game-body">
-                    <p>The Weight Game</p>
-                    <p>
-                        <FormattedMessage
-                            id="WeightGame.gameDescription"
-                            defaultMessage="Devinez le poids de naissance de milady et gagnez une bouteille de champagne"
-                        />
-                    </p>
-                    <Button 
-                    className="Form-button"
-                    disabled={this.state.alreadyPlayed}
-                    onClick={this.startWeightGame}> 
-                        <FormattedMessage
-                            id="WeightGame.play"
-                            defaultMessage="Jouer !"
-                        />
-                    </Button>
-                    <Modal 
-                        show={this.state.weightGameOpen}
-                        onClose={this.toggleWeightGameModal}
-                        title="The Weight Game">
-                        <WeightForm
-                            validateForm={this.validateForm}
-                        />
-                    </Modal>
-                </div>
+            <div className="Game-body">
+                <p>The Weight Game</p>
+                <p>
+                    <FormattedMessage
+                        id="WeightGame.gameDescription"
+                        defaultMessage="Devinez le poids de naissance de milady et gagnez une bouteille de champagne"
+                    />
+                </p>
+                <Button 
+                className="Form-button"
+                disabled={this.state.alreadyPlayed}
+                onClick={this.startWeightGame}> 
+                    <FormattedMessage
+                        id="WeightGame.play"
+                        defaultMessage="Jouer !"
+                    />
+                </Button>
+                <Modal 
+                    show={this.state.weightGameOpen}
+                    onClose={this.toggleWeightGameModal}
+                    title="The Weight Game">
+                    <WeightForm
+                        validateForm={this.validateForm}
+                    />
+                </Modal>
             </div>
         );
     }

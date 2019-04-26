@@ -1,30 +1,37 @@
+.Login-form, .Component-form, .Game-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    
+}
+
+.Login-form{
+    opacity: 0.85;
+    width: 30%;
+    min-width: 250px;
+}
+
+.Component-form{
+    width: 30%;
+    min-width: 300px;
+}
+
+.Game-form{
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
 .Component-icon {
     width: 20;
     height: 20;
   }
-
-.Component-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    padding: 20px;
-    border-radius: 20px;
-    width: 500px;
-}
-
-.Login-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    opacity: 0.85;
-    border-radius: 20px;
-    padding: 30px;
-    width: 500px;
-}
 
 p{
     text-align: center;
@@ -32,15 +39,10 @@ p{
 }
 
 .Game-body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border-radius: 20px;
-    width: 500px;
-    margin-top: 50px;
-    padding: 20px;
+    margin: 50px 20px 20px 20px;
+    width: 40%;
+    max-width: 400px;
+    min-width: 250px;
 }
 
 .Form-row{
@@ -52,12 +54,50 @@ p{
     width: 100%;
 }
 
-
-.Form-label{
+.Game-row{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    padding: 0px 20px;
+    margin: 15px 0px;
+  }
+
+
+.Form-label, .Welcome-label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.Form-label{
+    flex-direction: row;
+}
+
+.Welcome-label{
+    flex-direction: column;
+    width: 80%;
+}
+
+.Welcome-title{
+    font-size: 250%;
+    margin-bottom: 30px;
+}
+
+.Welcome-description{
+    font-size: 100%;
+}
+
+.Form-label-clue{
+    font-size: 80%;
+    width: 100%;
+    color: #666666;
+}
+
+.Game-rating-label{
+    width: 80px
 }
 
 .Form-field{
@@ -65,59 +105,37 @@ p{
     
 }
 
-.Form-input{
-    height: 40px;
-    margin: 15px;
-    width: 100%;
+.Login-input, .Form-input{
+    margin: 5px;
+    
 }
 
 .Weight-input{
-    height: 40px;
     margin: 15px;
     width: 80px;
 }
-
-.Login-input{
-    height: 40px;
-    margin: 5px;
-    width: 60%;
-}
-
 .Game-input{
-    height: 40px;
     margin: 5px;
     width: 50%;
 }
 
+.Game-checkbox-input{
+    margin-right: 20px;
+  }
+
 .Form-button{
-    background-color: darkslategrey;
-    color : white;
-    border-radius: 12px;
-    width: 150px;
+    min-width: 100px;
   }
 
   .Gallery-body{
-    width: 1000px;
-    padding-bottom: 100px;
+    width: 90%;
+    padding-bottom: 60px;
   }
 
   .Gallery-picture{
       background-color: transparent;
       height: 200px;
-  }
-
-  .Game-form{
-      border-radius: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-  }
-
-  .Game-row{
-    width: 100%;
-    padding-left: 20px;
-    margin-bottom: 15px;
+      margin-bottom: 20px;
   }
 
   .Game-checkbox{
@@ -132,13 +150,8 @@ p{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
-    padding-left: 2px;
+    justify-content: center;
     padding-top: 10px;
-  }
-
-  .Game-rating-label{
-      width: 80px
   }
 
   .Game-date{
@@ -149,58 +162,31 @@ p{
       margin-bottom: 15px;
   }
 
-  .Game-checkbox-input{
-    margin-right: 20px;
-  }
-
-  .Form-label-clue{
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-  }
-
   .Modal{
     background-color: #fff;
     border-radius: 5;
-    max-width: 50%;
-    max-height: 100%;
+    max-width: 500px;
+    min-width: 300px;
+    max-height: 90%;
     margin: 0 auto;
     overflow-y: auto;
-    margin-top: 50px
+    margin-top: 50px;
+    width: 50%;
   }
 
   .Backdrop{
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.8);
     width:100%;
     height: 100%;
-    padding: 50;
   }
 
   .Modal-header{
     background-color: #D3D3D3;
-     height: 60; 
-     padding: 10px;
-     width: 100%;
-     text-align: left
+    height: 60; 
+    padding: 10px;
+    width: 100%;
+    text-align: left
   }
-
-  .Welcome-label{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .Welcome-title{
-      font-size: 30px;
-      margin-bottom: 20px;
-  }
-
-  .Welcome-description{
-    font-size: 1em;
-}

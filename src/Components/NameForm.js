@@ -40,53 +40,52 @@ class NameForm extends Component {
         const {intl} = this.props;
         const {name} = this.state;
         const placeholder = intl.formatMessage(messages.namePlaceholder);
-        return (
-            <div >
-                {!this.state.nameValidated && 
-                    <Form onSubmit={this.storeName} className="Component-form">
-                        <label className="Form-label">
-                            <FormattedMessage
-                                id="NameForm.question"
-                                defaultMessage="Rentre ton nom pour pouvoir accéder aux jeux"
-                            />
-                        </label>
-                        <div className="Form-row">
-                            <Input 
-                                className="Form-input"
-                                type="text" 
-                                name="name"
-                                placeholder={placeholder}
-                                value={this.state.name} onChange={this.handleChange}
-                                required/>                    
-                            <Button 
-                            className="Form-button"> 
-                                <FormattedMessage
-                                    id="NameForm.validate"
-                                    defaultMessage="Valider"
-                                />
-                            </Button>
-                        </div>
-                    </Form>
-                }
-                {this.state.nameValidated &&
-                    <div className="Welcome-label">
-                        <div className="Welcome-title">
-                            <FormattedMessage
-                                id="NameForm.hiTitle"
-                                defaultMessage={'Salut {name}'}
-                                values={{name:name }}
-                            />
-                        </div>
-                        <div className="Welcome-description">  
-                            <FormattedMessage
-                                id="NameForm.hiDescription"
-                                defaultMessage="Nous avons besoin de ton aide pour trouver un prénom pour notre baby girl, et en prime tu peux jouer pour gagner une bouteille de champagne"
-                            />
-                        </div>
-                    </div>
-                }
+        if(this.state.nameValidated){
+            return (
+                <div className="Welcome-label">
+                <div className="Welcome-title">
+                    <FormattedMessage
+                        id="NameForm.hiTitle"
+                        defaultMessage={'Salut {name}'}
+                        values={{name:name }}
+                    />
+                </div>
+                <div className="Welcome-description">  
+                    <FormattedMessage
+                        id="NameForm.hiDescription"
+                        defaultMessage="Nous avons besoin de ton aide pour trouver un prénom pour notre baby girl, et en prime tu peux jouer pour gagner une bouteille de champagne"
+                    />
+                </div>
             </div>
-        );
+            );
+        }else{
+            return (
+                <Form onSubmit={this.storeName} className="Component-form">
+                    <label className="Form-label">
+                        <FormattedMessage
+                            id="NameForm.question"
+                            defaultMessage="Rentre ton nom pour pouvoir accéder aux jeux"
+                        />
+                    </label>
+                    <div className="Form-row">
+                        <Input 
+                            className="Form-input"
+                            type="text" 
+                            name="name"
+                            placeholder={placeholder}
+                            value={this.state.name} onChange={this.handleChange}
+                            required/>                    
+                        <Button 
+                        className="Form-button"> 
+                            <FormattedMessage
+                                id="NameForm.validate"
+                                defaultMessage="Valider"
+                            />
+                        </Button>
+                    </div>
+                </Form>
+            );
+        }
     }
 }
 

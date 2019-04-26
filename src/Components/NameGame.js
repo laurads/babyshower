@@ -95,34 +95,32 @@ class NameGame extends Component {
 
     render() {
         return (
-            <div >
-                <div className="Game-body">
-                    <p>The Name Game</p>
-                    <p>
-                        <FormattedMessage
-                            id="NameGame.gameDescription"
-                            defaultMessage="Aidez-nous à nous décider pour un prénom"
+            <div className="Game-body">
+                <p>The Name Game</p>
+                <p>
+                    <FormattedMessage
+                        id="NameGame.gameDescription"
+                        defaultMessage="Aidez-nous à nous décider pour un prénom"
+                    />
+                </p>
+                <Button 
+                className="Form-button"
+                disabled={this.state.alreadyPlayed}
+                onClick={this.startNameGame}> 
+                    <FormattedMessage
+                        id="NameGame.play"
+                        defaultMessage="Jouer !"
+                    />
+                </Button>
+                <Modal 
+                    show={this.state.nameGameOpen}
+                    onClose={this.toggleNameGameModal}
+                    title="The Name Game">
+                        <NameRatingForm
+                            saveNamesRatingAndOther={this.saveNamesRatingAndOther}
+                            names={this.state.names}
                         />
-                    </p>
-                    <Button 
-                    className="Form-button"
-                    disabled={this.state.alreadyPlayed}
-                    onClick={this.startNameGame}> 
-                        <FormattedMessage
-                            id="NameGame.play"
-                            defaultMessage="Jouer !"
-                        />
-                    </Button>
-                    <Modal 
-                        show={this.state.nameGameOpen}
-                        onClose={this.toggleNameGameModal}
-                        title="The Name Game">
-                            <NameRatingForm
-                                saveNamesRatingAndOther={this.saveNamesRatingAndOther}
-                                names={this.state.names}
-                            />
-                    </Modal>
-                </div>
+                </Modal>
             </div>
         );
     }

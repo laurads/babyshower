@@ -5,11 +5,7 @@
   },
   {
     "id": "DateForm.clue",
-    "defaultMessage": "Indice :"
-  },
-  {
-    "id": "DateForm.clueDescription",
-    "defaultMessage": "prévu le 31 Mai"
+    "defaultMessage": "Indice : prévu le 31 Mai"
   },
   {
     "id": "DateForm.validate",

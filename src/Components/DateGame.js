@@ -13,7 +13,7 @@ const messages = defineMessages({
     },
     errorMessage: {
         id: "DateGame.errorWhileSavingDate",
-        defaultMessage: "Oups, il y a eu une erreur. Rentente ta chance please !!!",
+        defaultMessage: "Oups, il y a eu une erreur. Retente ta chance please !!!",
     },
 });
 

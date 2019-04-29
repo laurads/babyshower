@@ -13,7 +13,7 @@ const messages = defineMessages({
     },
     errorMessage: {
         id: "WeightGame.errorWhileSavingWeight",
-        defaultMessage: "Oups, il y a eu une erreur. Rentente ta chance please !!!",
+        defaultMessage: "Oups, il y a eu une erreur. Retente ta chance please !!!",
     },
 });
 
@@ -70,7 +70,7 @@ class WeightGame extends Component {
                 <p>
                     <FormattedMessage
                         id="WeightGame.gameDescription"
-                        defaultMessage="Devinez le poids de naissance de milady et gagnez une bouteille de champagne"
+                        defaultMessage="Devinez le poids de naissance et gagnez une bouteille de champagne"
                     />
                 </p>
                 <Button 

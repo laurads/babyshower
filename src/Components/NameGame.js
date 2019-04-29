@@ -13,7 +13,7 @@ const messages = defineMessages({
     },
     errorMessage: {
         id: "NameGame.errorWhileSavingNames",
-        defaultMessage: "Oups, il y a eu une erreur. Rentente ta chance please !!!",
+        defaultMessage: "Oups, il y a eu une erreur. Retente ta chance please !!!",
     },
 });
 
@@ -44,6 +44,10 @@ class NameGame extends Component {
                 },
                 {
                     name: 'Livia',
+                    rating: 0
+                },
+                {
+                    name: 'Arya',
                     rating: 0
                 }
             ],

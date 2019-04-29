@@ -64,7 +64,8 @@ class NameForm extends Component {
                     <label className="Form-label">
                         <FormattedMessage
                             id="NameForm.question"
-                            defaultMessage="Rentre ton nom pour pouvoir accéder aux jeux"
+                            defaultMessage="Tape ton nom/prénom en entier ou ton surnom pour pouvoir accéder aux jeux"
+                            values={{nextLine: <br/>}}
                         />
                     </label>
                     <div className="Form-row">

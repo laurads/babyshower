@@ -7,7 +7,7 @@ import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 const messages = defineMessages({
     ideaPlaceholder: {
         id: "NameRatingForm.idea-placeholder",
-        defaultMessage: "Ta proposition",
+        defaultMessage: "Une idée ?",
       },
 });
 

@@ -52,5 +52,5 @@ mkdirpSync(LANG_DIR);
 // write the messages to this directory
 fs.writeFileSync(
   `${LANG_DIR}data.json`,
-  JSON.stringify({ en: defaultMessages, ...mergedTranslations }, null, 2)
+  JSON.stringify({ fr: defaultMessages, ...mergedTranslations }, null, 2)
 );

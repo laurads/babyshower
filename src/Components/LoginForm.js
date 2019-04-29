@@ -7,11 +7,11 @@ import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 const messages = defineMessages({
     errorInputLabel: {
       id: "LoginForm.errorInputLabel",
-      defaultMessage: "Dsl, le mot de passe n'est pas bon",
+      defaultMessage: "Dsl, il n'est pas magique ce mot là",
     },
     placeholder: {
         id: "LoginForm.placeholder",
-        defaultMessage: "La phrase magique",
+        defaultMessage: "Le mot magique",
     },
 });
 
@@ -71,8 +71,8 @@ class LoginForm extends Component {
                         placeholder={placeholder}
                         value={this.state.password} onChange={this.handleChange}
                         required/>
-                        { invalidCredentialsMessage && (<Label basic color='red' pointing='left'>{ invalidCredentialsMessage }</Label>) }
                 </div>
+                { invalidCredentialsMessage && (<Label className="errorLabel" basic color='red' pointing>{ invalidCredentialsMessage }</Label>) }
                 <Button 
                 style={{marginTop: "20px"}}
                 className="Form-button"> 

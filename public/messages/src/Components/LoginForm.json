@@ -1,11 +1,11 @@
 [
   {
     "id": "LoginForm.errorInputLabel",
-    "defaultMessage": "Dsl, le mot de passe n'est pas bon"
+    "defaultMessage": "Dsl, il n'est pas magique ce mot là"
   },
   {
     "id": "LoginForm.placeholder",
-    "defaultMessage": "La phrase magique"
+    "defaultMessage": "Le mot magique"
   },
   {
     "id": "LoginForm.connectLabel",

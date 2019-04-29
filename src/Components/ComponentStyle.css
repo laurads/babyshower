@@ -97,12 +97,7 @@ p{
 }
 
 .Game-rating-label{
-    width: 80px
-}
-
-.Form-field{
-    font-family: "Comic Sans MS";
-    
+    width: 80px;
 }
 
 .Login-input, .Form-input{
@@ -116,7 +111,9 @@ p{
 }
 .Game-input{
     margin: 5px;
-    width: 50%;
+    width: 60%;
+    max-width: 200px;
+    min-width: 150px;
 }
 
 .Game-checkbox-input{
@@ -129,21 +126,12 @@ p{
 
   .Gallery-body{
     width: 90%;
-    padding-bottom: 60px;
+    min-width: 300px;
   }
 
   .Gallery-picture{
       background-color: transparent;
       height: 200px;
-      margin-bottom: 20px;
-  }
-
-  .Game-checkbox{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin-top: 2px;
   }
 
   .Game-rating-row{
@@ -189,4 +177,10 @@ p{
     padding: 10px;
     width: 100%;
     text-align: left
+  }
+
+  .errorLabel{
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 80%;
   }

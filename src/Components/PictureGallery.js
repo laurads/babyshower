@@ -15,7 +15,7 @@ export default class PictureGallery extends Component {
     createGalleryPictures () {
         
         let picturesId = []
-        for(let i=1;i<=22;i++){
+        for(let i=0;i<=24;i++){
             picturesId.push(i);
         }
         return picturesId.map(this.createGalleryPicture);
@@ -31,7 +31,7 @@ export default class PictureGallery extends Component {
 
     render() {
         const settings = {
-            dots: true,
+            dots: false,
             infinite: true,
             slidesToShow: 4,
             slidesToScroll: 1,
@@ -39,16 +39,15 @@ export default class PictureGallery extends Component {
             autoplaySpeed: 2000,
             responsive: [
                 {
-                  breakpoint: 1024,
+                  breakpoint: 1200,
                   settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
+                    infinite: true
                   }
                 },
                 {
-                  breakpoint: 600,
+                  breakpoint: 900,
                   settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
@@ -56,7 +55,7 @@ export default class PictureGallery extends Component {
                   }
                 },
                 {
-                  breakpoint: 480,
+                  breakpoint: 600,
                   settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1

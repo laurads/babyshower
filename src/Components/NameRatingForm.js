@@ -3,6 +3,7 @@ import './ComponentStyle.css';
 import { Button, Form, Input} from 'semantic-ui-react';
 import NameRating from './NameRating';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
+import PropTypes from 'prop-types';
 
 const messages = defineMessages({
     ideaPlaceholder: {
@@ -20,6 +21,10 @@ class NameRatingForm extends Component {
         };
     }
 
+    static propTypes = {
+        saveNamesRatingAndOther: PropTypes.func.isRequired,
+    };
+
     handleSubmit = (event) =>{
         event.preventDefault();
         this.props.saveNamesRatingAndOther(this.state.names, this.state.other);
@@ -34,9 +39,11 @@ class NameRatingForm extends Component {
         }
     }
 
-    createNameRatings = () => (
-        this.state.names.map(this.createNameRating)
-    )
+    createNameRatings = () => {
+        if(this.state.names){
+            return this.state.names.map(this.createNameRating);
+        }
+    }
 
     createNameRating = item => {
         return (
@@ -81,6 +88,7 @@ class NameRatingForm extends Component {
                         className="Game-input"
                         type="text" 
                         name="other"
+                        id="other"
                         placeholder={placeholder}
                         value={this.state.other} onChange={this.handleChange}
                         />  

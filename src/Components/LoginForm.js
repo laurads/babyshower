@@ -28,7 +28,7 @@ class LoginForm extends Component {
         const target = event.target;
         if(target){
             this.setState({
-            [ target.name]: target.value
+                password: target.value
             });
         }
     }

@@ -6,6 +6,7 @@ import moment from 'moment';
 import 'rc-datetime-picker/dist/picker.css';
 import 'font-awesome/css/font-awesome.min.css';
 import {FormattedMessage} from 'react-intl';
+import PropTypes from 'prop-types';
 
 class DateForm extends Component {
     constructor(props) {
@@ -15,10 +16,12 @@ class DateForm extends Component {
         };
     }
 
+    static propTypes = {
+        validateForm: PropTypes.func.isRequired,
+    };
+
     handleChange = (birthDate) =>{
-        this.setState({
-            birthDate
-        });
+        this.setState({birthDate: birthDate});
     }
 
     handleValidateSubmit = (event) =>{

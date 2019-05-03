@@ -5,6 +5,7 @@ import Modal from './Modal';
 import NameRatingForm from './NameRatingForm';
 import {saveNameRatings, saveNameIdeas} from '../Api/fetchApi';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
+import PropTypes from 'prop-types';
 
 const messages = defineMessages({
     successMessage: {
@@ -16,6 +17,8 @@ const messages = defineMessages({
         defaultMessage: "Oups, il y a eu une erreur. Retente ta chance please !!!",
     },
 });
+
+const GAME_NAME = "NAME_GAME";
 
 class NameGame extends Component {
     constructor(props) {
@@ -56,6 +59,12 @@ class NameGame extends Component {
         };
     }
 
+    static propTypes = {
+        displayNotification: PropTypes.func.isRequired,
+        notifyGamePlayed: PropTypes.func.isRequired,
+        playerName: PropTypes.string.isRequired
+    };
+
     toggleNameGameModal = () => {
         this.setState({
             nameGameOpen: !this.state.nameGameOpen
@@ -69,11 +78,8 @@ class NameGame extends Component {
     }
 
     saveNamesRatingAndOther = (names, otherName) => {
-        this.saveNamesInDb(names, otherName);
         this.toggleNameGameModal();
-        this.setState({
-            alreadyPlayed: true
-        })
+        this.saveNamesInDb(names, otherName);
     }
 
     saveNamesInDb = (names, otherName) => {
@@ -81,20 +87,27 @@ class NameGame extends Component {
         console.log(names);
         console.log(otherName);
         console.log("----------------------");
-        const {intl} = this.props;
-        const successMessage = intl.formatMessage(messages.successMessage);
-        const errorMessage = intl.formatMessage(messages.errorMessage);
+        const errorMessage = this.props.intl.formatMessage(messages.errorMessage);
         saveNameRatings(this.props.playerName, names)
         .then(result => {
             return saveNameIdeas(this.props.playerName,otherName);
         })
         .then (result => {
-            this.props.displayNotification("success", successMessage);
+            this.gameOver();
         })
         .catch((error) => {
             console.log(error);
             this.props.displayNotification("error", errorMessage);
         });
+    }
+
+    gameOver = () => {
+        const successMessage = this.props.intl.formatMessage(messages.successMessage);
+        this.props.displayNotification("success", successMessage);
+        this.setState({
+            alreadyPlayed: true
+        });
+        this.props.notifyGamePlayed(GAME_NAME);
     }
 
     render() {

@@ -37,9 +37,7 @@ class MainContainer extends Component {
     }
 
     updatePlayerName = (playerName) => {
-        this.setState({
-            playerName: playerName
-        })
+        this.setState({playerName : playerName});
     }
 
     render() {

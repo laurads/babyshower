@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button, Input, Form} from 'semantic-ui-react';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
+import PropTypes from 'prop-types';
 
 const messages = defineMessages({
     namePlaceholder: {
@@ -19,11 +20,16 @@ class NameForm extends Component {
         };
     }
 
+    static propTypes = {
+        displayNotification: PropTypes.func.isRequired,
+        updatePlayerName: PropTypes.func.isRequired,
+    };
+
     handleChange = (event) =>{
         const target = event.target;
         if(target){
             this.setState({
-            [ target.name]: target.value
+                name: target.value
             });
         }
     }

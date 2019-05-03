@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './ComponentStyle.css';
 import { Button, Form, Input} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
+import PropTypes from 'prop-types';
 
 class WeightForm extends Component {
     constructor(props) {
@@ -10,6 +11,10 @@ class WeightForm extends Component {
             weight : ''
         };
     }
+
+    static propTypes = {
+        validateForm: PropTypes.func.isRequired,
+    };
 
     handleChange = (event) =>{
         const target = event.target;
@@ -27,8 +32,7 @@ class WeightForm extends Component {
 
     render() {
         return (
-            <div >
-                <Form onSubmit={this.handleValidateSubmit} className="Game-form">
+            <Form onSubmit={this.handleValidateSubmit} className="Game-form">
                 <p> 
                     <FormattedMessage
                         id="WeightForm.question"
@@ -46,6 +50,7 @@ class WeightForm extends Component {
                         className="Weight-input"
                         type="text" 
                         name="weight"
+                        id="weight"
                         placeholder="3.500"
                         value={this.state.weight} onChange={this.handleChange}
                         required/>     
@@ -62,7 +67,6 @@ class WeightForm extends Component {
                     </Button>
                 </div>
             </Form>
-            </div>
         );
     }
 }

@@ -5,6 +5,7 @@ import WeightForm from './WeightForm';
 import Modal from './Modal';
 import {saveGuessWeight} from '../Api/fetchApi';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
+import PropTypes from 'prop-types';
 
 const messages = defineMessages({
     successMessage: {
@@ -17,6 +18,8 @@ const messages = defineMessages({
     },
 });
 
+const GAME_NAME = "WEIGHT_GAME";
+
 class WeightGame extends Component {
     constructor(props) {
     super(props);
@@ -25,6 +28,12 @@ class WeightGame extends Component {
             alreadyPlayed: false
         };
     }
+
+    static propTypes = {
+        displayNotification: PropTypes.func.isRequired,
+        notifyGamePlayed: PropTypes.func.isRequired,
+        playerName: PropTypes.string.isRequired
+    };
 
     toggleWeightGameModal = () => {
         this.setState({
@@ -39,28 +48,32 @@ class WeightGame extends Component {
     }
 
     validateForm = (weight) => {
-        this.saveWeightInDb(weight);
         this.toggleWeightGameModal();
-        this.setState({
-            alreadyPlayed: true
-        })
+        this.saveWeightInDb(weight);
     }
 
     saveWeightInDb = (weight) => {
         console.log("TO SAVE IN DB")
         console.log(weight);
         console.log("----------------------");
-        const {intl} = this.props;
-        const successMessage = intl.formatMessage(messages.successMessage);
-        const errorMessage = intl.formatMessage(messages.errorMessage);
+        const errorMessage = this.props.intl.formatMessage(messages.errorMessage);
         saveGuessWeight(this.props.playerName, weight)
         .then(result => {
-            this.props.displayNotification("success", successMessage);
+            this.gameOver();
         })
         .catch((error) =>{
             console.log(error);
             this.props.displayNotification("error", errorMessage);
         });
+    }
+
+    gameOver = () => {
+        const successMessage = this.props.intl.formatMessage(messages.successMessage);
+        this.props.displayNotification("success", successMessage);
+        this.setState({
+            alreadyPlayed: true
+        });
+        this.props.notifyGamePlayed(GAME_NAME);
     }
 
     render() {
@@ -74,13 +87,13 @@ class WeightGame extends Component {
                     />
                 </p>
                 <Button 
-                className="Form-button"
-                disabled={this.state.alreadyPlayed}
-                onClick={this.startWeightGame}> 
-                    <FormattedMessage
-                        id="WeightGame.play"
-                        defaultMessage="Jouer !"
-                    />
+                    className="Form-button"
+                    disabled={this.state.alreadyPlayed}
+                    onClick={this.startWeightGame}> 
+                        <FormattedMessage
+                            id="WeightGame.play"
+                            defaultMessage="Jouer !"
+                        />
                 </Button>
                 <Modal 
                     show={this.state.weightGameOpen}

@@ -13,7 +13,6 @@ export default class PictureGallery extends Component {
     }
 
     createGalleryPictures () {
-        
         let picturesId = []
         for(let i=0;i<=24;i++){
             picturesId.push(i);

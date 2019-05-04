@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ComponentStyle.css';
-import { Button, Input, Form, Image, Label} from 'semantic-ui-react';
+import { Button, Input, Form, Image, Label, Loader}  from 'semantic-ui-react';
 import {checkCredentials} from '../Api/fetchApi';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 
@@ -20,7 +20,8 @@ class LoginForm extends Component {
     super(props);
         this.state = {
             password: '',
-            invalidCredentialsMessage: ''
+            invalidCredentialsMessage: '',
+            savingInProgress: false
         };
     }
 
@@ -37,16 +38,21 @@ class LoginForm extends Component {
         event.preventDefault();
         const {intl} = this.props;
         const errorMessage = intl.formatMessage(messages.errorInputLabel);
+        this.setState({
+            savingInProgress: true
+        });
         checkCredentials(this.state.password)
         .then(result => {
             if(result==="OK"){
                 this.setState({
-                    invalidCredentialsMessage: ""
+                    invalidCredentialsMessage: "",
+                    savingInProgress: false
                 });
                 this.props.loggedInValidation(true);
             }else{
                 this.setState({
-                    invalidCredentialsMessage: errorMessage
+                    invalidCredentialsMessage: errorMessage,
+                    savingInProgress: false
                 });
                 this.props.loggedInValidation(false);
             }
@@ -73,14 +79,18 @@ class LoginForm extends Component {
                         required/>
                 </div>
                 { invalidCredentialsMessage && (<Label className="errorLabel" basic color='red' pointing>{ invalidCredentialsMessage }</Label>) }
-                <Button 
-                style={{marginTop: "20px"}}
-                className="Form-button"> 
-                    <FormattedMessage
-                        id="LoginForm.connectLabel"
-                        defaultMessage="Se connecter"
-                    />
-                </Button>
+                {!this.state.savingInProgress ? 
+                    <Button 
+                    style={{marginTop: "20px"}}
+                    className="Form-button"> 
+                        <FormattedMessage
+                            id="LoginForm.connectLabel"
+                            defaultMessage="Se connecter"
+                        />
+                    </Button>
+                :
+                    <Loader active />
+                }
             </Form>
         );
     }

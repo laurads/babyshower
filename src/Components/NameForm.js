@@ -81,6 +81,7 @@ class NameForm extends Component {
                             name="name"
                             placeholder={placeholder}
                             value={this.state.name} onChange={this.handleChange}
+                            maxLength="25"
                             required/>                    
                         <Button 
                         className="Form-button"> 

@@ -11,6 +11,7 @@ class MainContainer extends Component {
         super(props);
             this.state = {
                 playerName: '',
+                gameOver: false
             };
         }
 
@@ -40,18 +41,25 @@ class MainContainer extends Component {
         this.setState({playerName : playerName});
     }
 
+    notifyGameOver = () => {
+        this.setState({gameOver: true})
+    }
+
     render() {
         return (
             <div className="Container-body">
                 <Header/>
-                <NameForm 
-                    displayNotification={this.displayNotification}
-                    updatePlayerName={this.updatePlayerName}
-                />
+                {!this.state.gameOver && 
+                    <NameForm 
+                        displayNotification={this.displayNotification}
+                        updatePlayerName={this.updatePlayerName}
+                    />
+                }
                 {this.state.playerName !== '' && 
                     <GameContainer 
                         displayNotification={this.displayNotification}
                         playerName={this.state.playerName}
+                        notifyGameOver={this.notifyGameOver}
                     /> 
                 }
                 <ToastContainer 

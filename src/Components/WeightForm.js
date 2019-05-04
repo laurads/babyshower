@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ComponentStyle.css';
-import { Button, Form, Input} from 'semantic-ui-react';
+import { Button, Form, Input, Loader} from 'semantic-ui-react';
 import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
 
@@ -8,7 +8,8 @@ class WeightForm extends Component {
     constructor(props) {
     super(props);
         this.state = {
-            weight : ''
+            weight : '',
+            savingInProgress: false
         };
     }
 
@@ -28,6 +29,7 @@ class WeightForm extends Component {
     handleValidateSubmit = (event) =>{
         event.preventDefault();
         this.props.validateForm(this.state.weight);
+        this.setState({savingInProgress: true});
     }
 
     render() {
@@ -57,14 +59,18 @@ class WeightForm extends Component {
                     <div className="Form-label"> kg </div>
                 </div>
                 <div className="Game-row">
-                    <Button 
-                        style={{marginTop: '10px'}}
-                        className="Form-button"> 
-                            <FormattedMessage
-                                id="WeightForm.validate"
-                                defaultMessage="Valider"
-                            />
-                    </Button>
+                    {!this.state.savingInProgress ? 
+                        <Button 
+                            style={{marginTop: '10px'}}
+                            className="Form-button"> 
+                                <FormattedMessage
+                                    id="WeightForm.validate"
+                                    defaultMessage="Valider"
+                                />
+                        </Button>
+                    :
+                        <Loader active />
+                    }
                 </div>
             </Form>
         );

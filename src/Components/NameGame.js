@@ -78,7 +78,6 @@ class NameGame extends Component {
     }
 
     saveNamesRatingAndOther = (names, otherName) => {
-        this.toggleNameGameModal();
         this.saveNamesInDb(names, otherName);
     }
 
@@ -87,27 +86,33 @@ class NameGame extends Component {
         console.log(names);
         console.log(otherName);
         console.log("----------------------");
-        const errorMessage = this.props.intl.formatMessage(messages.errorMessage);
         saveNameRatings(this.props.playerName, names)
         .then(result => {
             return saveNameIdeas(this.props.playerName,otherName);
         })
         .then (result => {
-            this.gameOver();
+            this.successfullySaved();
         })
         .catch((error) => {
             console.log(error);
-            this.props.displayNotification("error", errorMessage);
+            this.errorWhileSaving();
         });
     }
 
-    gameOver = () => {
+    errorWhileSaving = () => {
+        const errorMessage = this.props.intl.formatMessage(messages.errorMessage);
+        this.props.displayNotification("error", errorMessage);
+        this.toggleNameGameModal();
+    }
+
+    successfullySaved = () => {
         const successMessage = this.props.intl.formatMessage(messages.successMessage);
         this.props.displayNotification("success", successMessage);
         this.setState({
             alreadyPlayed: true
         });
         this.props.notifyGamePlayed(GAME_NAME);
+        this.toggleNameGameModal();
     }
 
     render() {

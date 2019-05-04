@@ -48,7 +48,6 @@ class WeightGame extends Component {
     }
 
     validateForm = (weight) => {
-        this.toggleWeightGameModal();
         this.saveWeightInDb(weight);
     }
 
@@ -56,24 +55,30 @@ class WeightGame extends Component {
         console.log("TO SAVE IN DB")
         console.log(weight);
         console.log("----------------------");
-        const errorMessage = this.props.intl.formatMessage(messages.errorMessage);
         saveGuessWeight(this.props.playerName, weight)
         .then(result => {
-            this.gameOver();
+            this.successfullySaved();
         })
         .catch((error) =>{
             console.log(error);
-            this.props.displayNotification("error", errorMessage);
+            
         });
     }
 
-    gameOver = () => {
+    errorWhileSaving = () => {
+        const errorMessage = this.props.intl.formatMessage(messages.errorMessage);
+        this.props.displayNotification("error", errorMessage);
+        this.toggleWeightGameModal();
+    }
+
+    successfullySaved = () => {
         const successMessage = this.props.intl.formatMessage(messages.successMessage);
         this.props.displayNotification("success", successMessage);
         this.setState({
             alreadyPlayed: true
         });
         this.props.notifyGamePlayed(GAME_NAME);
+        this.toggleWeightGameModal();
     }
 
     render() {

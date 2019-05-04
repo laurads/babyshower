@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ComponentStyle.css';
-import { Button, Form, Input} from 'semantic-ui-react';
+import { Button, Form, Input, Loader} from 'semantic-ui-react';
 import NameRating from './NameRating';
 import {FormattedMessage, defineMessages, injectIntl} from 'react-intl';
 import PropTypes from 'prop-types';
@@ -17,7 +17,8 @@ class NameRatingForm extends Component {
         super(props);
         this.state = {
             names : this.props.names,
-            other: ''
+            other: '',
+            savingInProgress: false
         };
     }
 
@@ -28,6 +29,7 @@ class NameRatingForm extends Component {
     handleSubmit = (event) =>{
         event.preventDefault();
         this.props.saveNamesRatingAndOther(this.state.names, this.state.other);
+        this.setState({savingInProgress: true});
     }
 
     handleChange = (event) =>{
@@ -94,13 +96,17 @@ class NameRatingForm extends Component {
                         />  
                 </div>
                 <div className="Game-row">
-                    <Button 
-                    className="Form-button"> 
-                        <FormattedMessage
-                            id="NameRatingForm.validate"
-                            defaultMessage="Valider"
-                        />
-                    </Button>
+                    {!this.state.savingInProgress ?
+                        <Button 
+                        className="Form-button"> 
+                            <FormattedMessage
+                                id="NameRatingForm.validate"
+                                defaultMessage="Valider"
+                            />
+                        </Button>
+                    :
+                        <Loader active />
+                    }
                 </div>
             </Form>
         );

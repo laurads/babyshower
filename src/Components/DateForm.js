@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ComponentStyle.css';
-import { Button, Form} from 'semantic-ui-react';
+import { Button, Form, Loader} from 'semantic-ui-react';
 import {DatetimePicker} from 'rc-datetime-picker';
 import moment from 'moment';
 import 'rc-datetime-picker/dist/picker.css';
@@ -12,7 +12,8 @@ class DateForm extends Component {
     constructor(props) {
     super(props);
         this.state = {
-            birthDate : moment()
+            birthDate : moment(),
+            savingInProgress: false
         };
     }
 
@@ -26,7 +27,8 @@ class DateForm extends Component {
 
     handleValidateSubmit = (event) =>{
         event.preventDefault();
-        this.props.validateForm(this.state.birthDate.format('DD/MM H:mm'))
+        this.props.validateForm(this.state.birthDate.format('DD/MM H:mm'));
+        this.setState({savingInProgress: true});
     }
 
     render() {
@@ -60,13 +62,17 @@ class DateForm extends Component {
                     />    
                 </div>
                 <div className="Game-row">
-                    <Button 
-                        className="Form-button"> 
-                            <FormattedMessage
-                                id="DateForm.validate"
-                                defaultMessage="Valider"
-                            />
-                    </Button>
+                    {!this.state.savingInProgress ?
+                        <Button 
+                            className="Form-button"> 
+                                <FormattedMessage
+                                    id="DateForm.validate"
+                                    defaultMessage="Valider"
+                                />
+                        </Button>
+                    :
+                        <Loader active />
+                    }
                 </div>
             </Form>
             </div>

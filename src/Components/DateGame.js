@@ -48,7 +48,6 @@ class DateGame extends Component {
     }
 
     validateForm = (date) => {
-        this.toggleDateGameModal();
         this.saveBirthDateInDb(date);
     }
 
@@ -56,24 +55,30 @@ class DateGame extends Component {
         console.log("TO SAVE IN DB")
         console.log(birthDate);
         console.log("----------------------");
-        const errorMessage = this.props.intl.formatMessage(messages.errorMessage);
         saveGuessDate(this.props.playerName, birthDate)
         .then(result => {
-            this.gameOver();
+            this.successfullySaved();
         })
         .catch((error) =>{
             console.log(error);
-            this.props.displayNotification("error", errorMessage);
+            this.errorWhileSaving();
         });
     }
 
-    gameOver = () => {
+    errorWhileSaving = () => {
+        const errorMessage = this.props.intl.formatMessage(messages.errorMessage);
+        this.props.displayNotification("error", errorMessage);
+        this.toggleDateGameModal();
+    }
+
+    successfullySaved = () => {
         const successMessage = this.props.intl.formatMessage(messages.successMessage);
         this.props.displayNotification("success", successMessage);
         this.setState({
             alreadyPlayed: true
         });
         this.props.notifyGamePlayed(GAME_NAME);
+        this.toggleDateGameModal();
     }
 
     render() {

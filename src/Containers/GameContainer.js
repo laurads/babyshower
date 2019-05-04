@@ -18,7 +18,8 @@ class GameContainer extends Component {
 
     static propTypes = {
         displayNotification: PropTypes.func.isRequired,
-        playerName: PropTypes.string.isRequired
+        playerName: PropTypes.string.isRequired,
+        notifyGameOver: PropTypes.func.isRequired
     };
 
     updateGameNbPlayed = (playedGame) => {
@@ -28,6 +29,9 @@ class GameContainer extends Component {
             this.setState({
                 playedGames: playedGames
             });
+            if(playedGames.length === GAMES_NB){
+                this.props.notifyGameOver();
+            }
         }
     }
 

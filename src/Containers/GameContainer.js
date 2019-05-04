@@ -23,6 +23,12 @@ class GameContainer extends Component {
     };
 
     updateGameNbPlayed = (playedGame) => {
+        if (playedGame === 'NAME_GAME') {
+            this.refs.DateGame.scrollIntoView({ behavior: 'smooth', alignToTop: false });
+        }
+        if (playedGame === 'DATE_GAME') {
+            this.refs.WeightGame.scrollIntoView({ behavior: 'smooth', alignToTop: false });            
+        }
         const playedGames = this.state.playedGames
         if(!playedGames.includes(playedGame)){
             playedGames.push(playedGame);
@@ -44,21 +50,27 @@ class GameContainer extends Component {
         else {
             return (
                 <div className="Container-body-level2">
-                    <NameGame 
-                        playerName={this.props.playerName}
-                        displayNotification={this.props.displayNotification}
-                        notifyGamePlayed={this.updateGameNbPlayed}
-                    />
-                    <DateGame 
-                        playerName={this.props.playerName}
-                        displayNotification={this.props.displayNotification}
-                        notifyGamePlayed={this.updateGameNbPlayed}
-                    />
+                    <div ref="NameGame" className="Container-body-level2">
+                        <NameGame 
+                            playerName={this.props.playerName}
+                            displayNotification={this.props.displayNotification}
+                            notifyGamePlayed={this.updateGameNbPlayed}
+                        />
+                    </div>
+                    <div ref="DateGame" className="Container-body-level2">                                    
+                        <DateGame 
+                            playerName={this.props.playerName}
+                            displayNotification={this.props.displayNotification}
+                            notifyGamePlayed={this.updateGameNbPlayed}
+                        />
+                    </div>
+                    <div ref="WeightGame" className="Container-body-level2"> 
                     <WeightGame
                         playerName={this.props.playerName}
                         displayNotification={this.props.displayNotification}
                         notifyGamePlayed={this.updateGameNbPlayed}
                     />
+                    </div>
                 </div>
             );
         }

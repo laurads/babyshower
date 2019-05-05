@@ -1,7 +1,7 @@
 [
   {
     "id": "WeightGame.weightSavedWithSuccess",
-    "defaultMessage": "C'est bon c'est ds la boite, merci !!!"
+    "defaultMessage": "C'est bon, le poids est ds la boite !!!"
   },
   {
     "id": "WeightGame.errorWhileSavingWeight",

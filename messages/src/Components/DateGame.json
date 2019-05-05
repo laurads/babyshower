@@ -1,7 +1,7 @@
 [
   {
     "id": "DateGame.dateSavedWithSuccess",
-    "defaultMessage": "C'est bon c'est ds la boite, merci !!!"
+    "defaultMessage": "C'est bon, la date est ds la boite !!!"
   },
   {
     "id": "DateGame.errorWhileSavingDate",

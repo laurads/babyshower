@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 const messages = defineMessages({
     successMessage: {
       id: "NameGame.namesSavedWithSuccess",
-      defaultMessage: "C'est bon c'est ds la boite, merci !!!",
+      defaultMessage: "C'est bon, le nom est ds la boite !!!",
     },
     errorMessage: {
         id: "NameGame.errorWhileSavingNames",

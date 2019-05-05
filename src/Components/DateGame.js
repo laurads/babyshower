@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 const messages = defineMessages({
     successMessage: {
         id: "DateGame.dateSavedWithSuccess",
-        defaultMessage: "C'est bon c'est ds la boite, merci !!!",
+        defaultMessage: "C'est bon, la date est ds la boite !!!",
     },
     errorMessage: {
         id: "DateGame.errorWhileSavingDate",

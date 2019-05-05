@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 const messages = defineMessages({
     successMessage: {
       id: "WeightGame.weightSavedWithSuccess",
-      defaultMessage: "C'est bon c'est ds la boite, merci !!!",
+      defaultMessage: "C'est bon, le poids est ds la boite !!!",
     },
     errorMessage: {
         id: "WeightGame.errorWhileSavingWeight",

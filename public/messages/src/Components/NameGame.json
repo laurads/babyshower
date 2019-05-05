@@ -1,7 +1,7 @@
 [
   {
     "id": "NameGame.namesSavedWithSuccess",
-    "defaultMessage": "C'est bon c'est ds la boite, merci !!!"
+    "defaultMessage": "C'est bon, le nom est ds la boite !!!"
   },
   {
     "id": "NameGame.errorWhileSavingNames",

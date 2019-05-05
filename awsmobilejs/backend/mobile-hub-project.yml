@@ -10,7 +10,7 @@ features:
         paths:
           /date: !com.amazonaws.mobilehub.v0.Function {}
           '/date/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/GuessDate-20190418144049.zip
+            codeFilename: uploads/GuessDate-20190505114510.zip
             description: 'Handler for calls to resource path : /date/{proxy+}'
             enableCORS: true
             environment: {}
@@ -29,7 +29,7 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /items: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/Login-20190415215051.zip
+            codeFilename: uploads/Login-20190505114510.zip
             description: 'Handler for calls to resource path : /login/{proxy+}'
             enableCORS: true
             environment:
@@ -44,7 +44,7 @@ features:
             timeout: '3'
             version: GUynP0vcFTmBRaIt6fFp6vuoLQneioVK
           '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/Login-20190415215051.zip
+            codeFilename: uploads/Login-20190505114510.zip
             description: 'Handler for calls to resource path : /login/{proxy+}'
             enableCORS: true
             environment:
@@ -59,7 +59,7 @@ features:
             timeout: '3'
             version: KwospaGXyHAziVfo2DxkvphBMggSkBv6
           /login: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/Login-20190415215051.zip
+            codeFilename: uploads/Login-20190505114510.zip
             description: 'Handler for calls to resource path : /login/{proxy+}'
             enableCORS: true
             environment:
@@ -74,7 +74,7 @@ features:
             timeout: '3'
             version: CURva1BUk1Wu2PRtNMZkkD.pEeaE1Y54
           '/login/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/Login-20190415215051.zip
+            codeFilename: uploads/Login-20190505114510.zip
             description: 'Handler for calls to resource path : /login/{proxy+}'
             enableCORS: true
             environment:
@@ -96,7 +96,7 @@ features:
         paths:
           /ideas: !com.amazonaws.mobilehub.v0.Function {}
           '/ideas/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/NameRating-20190417212516.zip
+            codeFilename: uploads/NameRating-20190505114510.zip
             description: 'Handler for calls to resource path : /names/{proxy+}'
             enableCORS: true
             environment: {}
@@ -110,7 +110,7 @@ features:
             version: 8a1SR1m.r6IKrOzgwbBzYm3DkkYlTFWm
           /names: !com.amazonaws.mobilehub.v0.Function {}
           '/names/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/NameRating-20190417212516.zip
+            codeFilename: uploads/NameRating-20190505114510.zip
             description: 'Handler for calls to resource path : /names/{proxy+}'
             enableCORS: true
             environment: {}
@@ -130,7 +130,7 @@ features:
         paths:
           /weight: !com.amazonaws.mobilehub.v0.Function {}
           '/weight/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/WeightGuess-20190419220514.zip
+            codeFilename: uploads/WeightGuess-20190505114510.zip
             description: 'Handler for calls to resource path : /weight/{proxy+}'
             enableCORS: true
             environment: {}
@@ -149,7 +149,7 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /items: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20190405220344.zip
+            codeFilename: uploads/sampleLambda-20190505114510.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
@@ -162,7 +162,7 @@ features:
             timeout: '3'
             version: wOO6.jM9SAQFSmTuc2PrGzwY1wkz.mm2
           '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20190405220344.zip
+            codeFilename: uploads/sampleLambda-20190505114510.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}

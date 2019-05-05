@@ -53,6 +53,11 @@ class NameGame extends Component {
                     name: 'Arya',
                     rating: 0
                 }
+                ,
+                {
+                    name: 'Alicia',
+                    rating: 0
+                }
             ],
             nameGameOpen : false,
             alreadyPlayed: false

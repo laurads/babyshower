@@ -96,7 +96,7 @@ features:
         paths:
           /ideas: !com.amazonaws.mobilehub.v0.Function {}
           '/ideas/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/NameRating-20190505114510.zip
+            codeFilename: uploads/NameRating-20190505123434.zip
             description: 'Handler for calls to resource path : /names/{proxy+}'
             enableCORS: true
             environment: {}
@@ -110,7 +110,7 @@ features:
             version: 8a1SR1m.r6IKrOzgwbBzYm3DkkYlTFWm
           /names: !com.amazonaws.mobilehub.v0.Function {}
           '/names/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/NameRating-20190505114510.zip
+            codeFilename: uploads/NameRating-20190505123434.zip
             description: 'Handler for calls to resource path : /names/{proxy+}'
             enableCORS: true
             environment: {}

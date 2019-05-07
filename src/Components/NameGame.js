@@ -52,8 +52,7 @@ class NameGame extends Component {
                 {
                     name: 'Arya',
                     rating: 0
-                }
-                ,
+                },
                 {
                     name: 'Alicia',
                     rating: 0

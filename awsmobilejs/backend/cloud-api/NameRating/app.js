@@ -34,7 +34,7 @@ app.post('/names', function(req, res) {
   const username = req.body.username;
   const nameRatings = req.body.nameRatings;
   console.log('username : '+username);
-  console.log('nameRatings : '+nameRatings);
+  console.log('nameRatings : '+ JSON.stringify(nameRatings));
   const data = {
     'username': username,
   }
@@ -44,6 +44,8 @@ app.post('/names', function(req, res) {
   data[nameRatings[3].name] = nameRatings[3].rating;
   data[nameRatings[4].name] = nameRatings[4].rating;
   data[nameRatings[5].name] = nameRatings[5].rating;
+  data[nameRatings[6].name] = nameRatings[6].rating;
+  data[nameRatings[7].name] = nameRatings[7].rating;
   let putItemParams = {
     TableName: ratingsTableName,
     Item: data
